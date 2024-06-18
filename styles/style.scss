@@ -1,0 +1,47 @@
+@import "values";
+
+* {
+  font-family: "Geologica", sans-serif;
+  box-sizing: border-box;
+  color: black;
+}
+
+h1 {
+  color: $orangeText800;
+  font-size: 3.063rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+h2 {
+  color: $orangeText800;
+  font-size: 3.063rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+p {
+  color: $orangeText700;
+  font-size: 2.438rem;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+
+.yellow-paragraph-text {
+  color: $primaryYellow;
+}
+
+.orange-text {
+  color: $orangeText400;
+  font-weight: 600;
+}
+
+.yellow-span-text {
+  color: $primaryYellow;
+  font-weight: 800;
+}
+
+.primary-black-text {
+  color: $primaryBlack;
+}

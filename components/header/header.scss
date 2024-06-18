@@ -1,0 +1,25 @@
+@import "../../styles/values.scss";
+
+header {
+  display: flex;
+  gap: 30px;
+  padding: 34px 50px;
+
+  .language-change {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    color: $orangeText700;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .stay-tuned {
+    background: $primaryYellow;
+    border-radius: 37px;
+    padding: 16px 50px;
+    color: $primaryWhite;
+    font-size: 1.563rem;
+  }
+}

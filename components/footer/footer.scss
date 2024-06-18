@@ -1,0 +1,93 @@
+@import "../../styles/values";
+
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 180px;
+  position: relative;
+  padding: 140px 0px 0px 0px;
+  overflow: hidden;
+  height: 100vh;
+
+  &:before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    height: 100%;
+    width: 200vw;
+
+    background-color: $primaryYellow ;
+    content: "";
+
+    z-index: -1;
+
+    border-radius: 100% 100% 0px 0px;
+  }
+
+  .links {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 0 124px;
+
+    a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+      text-align: center;
+      width: 415px;
+
+      font-size: 1.813rem;
+
+
+      color: $primaryWhite;
+      font-weight: Bold;
+
+      &.footer-logo {
+        width: 605px;
+
+        img {
+          width: 315px;
+        }
+
+        font-size: 2.438rem;
+      }
+
+      &.soc-media {
+        img {
+          max-width: 140px;
+        }
+      }
+    }
+  }
+
+  .big-name-logo-privacy {
+    display: flex;
+    flex-direction: column;
+
+    .name {
+      img {
+        width: 100vw;
+      }
+    }
+
+    .privacy {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: $primaryBlack;
+
+      p {
+        padding: 4px 0px;
+        color: $primaryWhite;
+        font-weight: 300;
+        font-size: 1.375rem;
+      }
+    }
+  }
+}
