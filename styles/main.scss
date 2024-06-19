@@ -12,6 +12,7 @@ section {
 }
 
 
+
 .main-section {
   height: 100vh;
 
@@ -182,7 +183,6 @@ section {
   }
 }
 
-
 #animcontainer {
   position: absolute;
   min-height: 100%;
@@ -210,5 +210,44 @@ section {
   .anim.scrolled3 {
     transform: translate(100vh, 300vh);
     transition: 1s;
+  }
+}
+
+
+
+.phone-container {
+  position: absolute;
+  z-index: 99999;
+  transform: translate(20vw, 0%);
+
+  .phone {
+    scale: 1;
+
+    .content {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      width: 99%;
+      border: 2px solid pink;
+      border-radius: 70px;
+      overflow: hidden;
+      background: red;
+
+      img {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, 2.2%);
+        width: 92.5%;
+        z-index: 1;
+      }
+    }
+
+    #phone_container {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      z-index: 2;
+      //opacity: 0;
+    }
   }
 }
