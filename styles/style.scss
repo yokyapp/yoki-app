@@ -14,17 +14,21 @@ h1 {
 }
 
 h2 {
-  color: $orangeText800;
-  font-size: 3.063rem;
-  font-weight: 800;
-  line-height: 1.2;
+  color: $primaryBlack;
+  //font-size: 3.063rem;
+  font-size: 2.5vw;
+  font-style: normal;
+  font-weight: 700;
+  //line-height: 4.313rem;
+  line-height: 3.2vw;
 }
 
 p {
-  color: $orangeText700;
-  font-size: 2.438rem;
+  color: $primaryParagraph;
+  //font-size: 2.438rem;
+  font-size: 2.1vw;
   font-weight: 400;
-  line-height: 1.2;
+  line-height: normal;
 }
 
 
@@ -36,6 +40,12 @@ p {
   color: $orangeText400;
   font-weight: 600;
 }
+
+.yellow-text {
+  color: $primaryYellow;
+  font-weight: 800;
+}
+
 
 .yellow-span-text {
   color: $primaryYellow;

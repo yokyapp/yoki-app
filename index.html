@@ -7,88 +7,149 @@
     <title>Vite App</title>
     <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&display=swap" rel="stylesheet">
 
-    <!--  jquery  -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.9/fullpage.min.css">
+    <style>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.7/jquery.fullpage.css"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.7/jquery.fullpage.extensions.min.js"></script>
-    <link rel="stylesheet" href="styles/default.scss">
+    </style>
   </head>
   <body>
-
     <div class="phone-container">
       <div class="phone">
         <div class="content">
-          <img src="./public/phone_screens/photo_scenes/first_screen.png" alt="">
+          <img src="/phone_screens/photo_scenes/zero.png" class="photo1" alt="">
+          <img src="/phone_screens/photo_scenes/Group3.png" class="photo2" alt="">
         </div>
-        <img id="phone_container" src="./public/phone_screens/PIxelTransparent.png" alt="">
+        <img id="phone_container" src="/phone_screens/PIxelTransparent.png" alt="">
+      </div>
+    </div>
+    <div class="qr_phone">
+      <div class="phone">
+        <div class="content">
+          <img src="/phone_screens/photo_scenes/qr_code.png" class="photo2" alt="">
+        </div>
+        <img src="/phone_screens/PIxelTransparent.png" alt="">
       </div>
     </div>
 
-    <div class="sections-wrapper" id="fullpage">
+    <div id="fullpage">
       <section id="section1" class="main-section section">
-        <header id="header"></header>
+        <header id="header">
+          <button class="language-change">
+            <img src="/components/header/world-svg.svg" alt="">
+            UA
+          </button>
+
+          <button class="stay-tuned">
+            Бути в курсі
+          </button>
+        </header>
         <div class="head-screen">
           <div class="text-content">
-            <h1>Вітаємо у системі пошуку і співпраці <span class="yellow-span-text"> <br>Йокі!</span></h1>
-            <p>Тут ви знайдете нових друзів, однодумців та партнерів готових втілювати ваші <span class="yellow-span-text">мрії та амбіції</span> в життя.</p>
+            <h2>Втаємо у застосунку для пошуку і співпраці з однодумцями</h2>
+          </div>
+
+          <div class="text-content">
+            <h1  class="yellow-text">Yoky!</h1>
+            <div>
+              <p class="yellow-text">Знайдіть своїх однодумців та</p>
+              <p>Реалізуйте ідеї разом.</p>
+            </div>
           </div>
         </div>
       </section>
-
       <section id="section2" class="about-section section">
-        <div class="text-content">
-          <h2>Розкажіть про себе у анкеті, дайте іншим зрозуміти хто ви і чого хочете</h2>
+        <div class="text-content tell_text">
+          <h2><span class="yellow-text">Розкажіть про себе</span> у анкеті, дайте іншим зрозуміти хто ви і чого хочете</h2>
           <div class="paragraphs-content">
-            <p>У анкеті ви можете написати чим любите займатися, ваші захоплення, улюблені фільми, жанри музики і ще багато іншого. </p>
-            <p>Можливо саме це стане джерелом потужного зв’язку з вашими новими знайомими</p>
+            <p>У анкеті ви можете написати чим любите займатися, ваші захоплення, улюблені фільми, жанри музики і ще багато іншого.</p>
           </div>
         </div>
       </section>
+      <section id="section3" class="about-section section">
 
-      <section id="section3" class="search-section section">
-        <div class="text-content">
-          <h2>Шукайте групи, проєки та інших користувачів за допомогою фільтрів <span class="yellow-span-text">пошуку</span></h2>
-          <p>Знайдіть мрійників як і ви самі, об’єднуйтесь з тими хто дійсно вас розуміє і готовий творити разом.</p>
-        </div>
       </section>
-
       <section id="section4" class="search-more-section section">
         <div class="text-content">
-          <h2>Шукайте пости, групи, проєки а також інших користувачів за допомогою фільтрів <span class="yellow-span-text">пошуку</span></h2>
-          <p>Знайдіть мрійників як і ви самі, об’єднуйтесь з тими, хто дійсно вас розуміє і готовий творити разом.</p>
+          <h2>А ось <span class="yellow-span-text">ваш бейдж</span>, тепер можемо приступити до справи</h2>
         </div>
       </section>
-
       <section id="section5" class="text-section section">
         <div class="text-content">
-          <h2>Переписуйтеся з вашими друзями і колегами у <span class="yellow-span-text">чаті</span></h2>
-          <div class="paragraphs-content">
-            <p>Надсилайте аудіо, фото та відео.</p>
-            <p class="orange-text">Діліться референсами, цікавими матеріалами, та будь-чим, що вам подобається!</p>
-          </div>
+          <h2>Тепер <span class="yellow-span-text">давайте</span> знайдемо чим зайнятись!</h2>
         </div>
       </section>
-
-      <section id="section6" class="last-section section">
+      <section id="section6" class="find-section section">
         <div class="text-content">
-          <h2 class="primary-black-text">Переглядайте роботи інших користувачів та  <span class="yellow-span-text">виставляйте свої</span> у стрічці.</h2>
+          <h2>Знайдіть ідеальне заняття!</h2>
         </div>
         <div class="text-content">
-          <div class="text">
-            <p class="orange-text">Діліться <br> картинками, анімаціями, музикою і відео. <br> Рекламуйте свої проєкти та шукайте охочих прийняти в них участь  </p>
-          </div>
+          <p>Скористайтеся пошуком, щоб знайти цікаві проєкти та події.</p>
+          <br>
+          <p>Виберіть з безлічі проектів, які підходять саме вам — від творчих колаборацій до спортивних ініціатив.</p>
         </div>
       </section>
+      <section id="section7" class="explore-section section">
+        <div class="text-content">
+          <h2><span class="yellow-span-text">Досліджуйте</span> захоплення та інтереси</h2>
+        </div>
+      </section>
+      <section id="section8" class="join-section section">
+        <div class="text-content">
+          <h2> Вибрали цікавий вам проєкт? <span class="yellow-span-text"> Чудово!</span></h2>
 
-      <section id="section7" class="section">
-        <footer id="footer"></footer>
+          <p>Приєднуйтесь до спільноти однодумців і втілюйте свої ідеї у життя разом з іншими.</p>
+        </div>
+      </section>
+      <section id="section9" class="sent-badge-section section">
+        <div class="text-content">
+          <h2>Тепер надішліть свій<span class="yellow-span-text"> бейдж!</span></h2>
+        </div>
+      </section>
+      <section id="section10" class="show-yourself-section section">
+        <div class="text-content">
+          <h2>Висловіть Себе! <br><span class="yellow-span-text"> Сміливо!</span></h2>
+        </div>
+        <div class="text-content">
+          <p>Діліться своєю історією, вашими мріями та талантами! </p>
+          <br>
+          <p>Ваш унікальний досвід та навички можуть виявитися ключем до великих можливостей.</p>
+        </div>
+      </section>
+      <section id="section11" class="its-time-section section">
+        <img src="/components/main/gallery.png" alt="">
+        <div class="text-content">
+          <h2>Розгорни Свої Можливості — <br><span class="yellow-span-text">Час Діяти!</span></h2>
+        </div>
+      </section>
+      <section id="section17" class="section">
+        <footer id="footer">
+          <div class="links">
+            <a href="" class="soc-media">
+              <img src="/components/footer/telegram-icon-svg.svg" alt="">
+
+              долучайся до нашого Telegram
+            </a>
+            <a href="" class="footer-logo">
+              <img src="/components/footer/yoki-logo-svg.svg" alt="">
+
+              Натисніть на Yoky щоб підтримати наш проєкт.
+            </a>
+            <a href="" class="soc-media">
+              <img src="/components/footer/discord-icon-svg.svg" alt="">
+              долучайся до нашого Discord
+            </a>
+          </div>
+          <div class="big-name-logo-privacy">
+            <div class="name">
+              <!--            <img src="/components/footer/yoky-name.svg" alt="">-->
+            </div>
+            <div class="privacy">
+              <p>Copyright 2024 Yoky. Всі права захищені.</p>
+            </div>
+          </div>
+        </footer>
       </section>
     </div>
-
-
-
-
 
 
     <script type="module" src="/main.js"></script>
@@ -96,89 +157,63 @@
     <script type="module" src="./components/footer/footer.js"></script>
 
 
-    <!--  lootie libraries  -->
-    <script src="https://unpkg.com/@lottiefiles/lottie-interactivity@latest/dist/lottie-interactivity.min.js"></script>
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.5/lottie.min.js"></script>
-
-
-
-<!--    <script type="text/javascript" src="anim.js"></script>-->
-
-
-
-
     <script>
-      LottieInteractivity.create({
-        player: '.anim',
-        mode: 'scroll',
-        actions: [
-          {
-            visibility: [0, 1],
-            type: 'seek',
-            frames: [0, 136],
-          },
-        ]
-      });
-
       window.addEventListener('scroll', () => {
-        const scrollY = window.scrollY;
-        const animationElements = document.querySelectorAll('.anim');
-
-        const triggerDistances = [window.innerHeight - 400, window.innerHeight * 2 - 400, window.innerHeight * 3 - 400];
-
-        animationElements.forEach((element, index) => {
-          if (scrollY > triggerDistances[index]) {
-            element.classList.add(`scrolled${index + 1}`);
-          } else {
-            element.classList.remove(`scrolled${index + 1}`);
-          }
-        });
-      });
-
-
-
-
-
-
-
-      window.addEventListener('scroll', () => {
-        const scrollY = window.scrollY;
-        const animationElements = document.querySelectorAll('.anim');
+        const animationElements = document.querySelectorAll('.phone-container');
+        const animationsText = document.querySelectorAll('.tell_text');
+        const qr_phone = document.querySelectorAll('.qr_phone');
+        const photo2 = document.querySelectorAll('.photo2');
 
         const triggerDistance = window.innerHeight - 400;
         const triggerDistance2 = window.innerHeight * 2 - 400;
         const triggerDistance3 = window.innerHeight * 3 - 400;
 
-        animationElements.forEach(element => {
-          if (scrollY > triggerDistance) {
-            element.classList.add('scrolled');
-          } else {
-            element.classList.remove('scrolled');
-          }
+        function addTransition(element) {
+          element.style.transition = 'transform 1s, width 1s, top 1s';
+        }
 
-          if (scrollY > triggerDistance2) {
-            element.classList.add('scrolled2');
-          } else {
-            element.classList.remove('scrolled2');
-          }
+        function removeTransition(element) {
+          setTimeout(() => {
+            element.style.transition = '';
+          }, 1000);
+        }
 
-          if (scrollY > triggerDistance3) {
-            element.classList.add('scrolled3');
-          } else {
-            element.classList.remove('scrolled3');
-          }
-        });
+        function manageScrollAnimations(elements, scrollY, triggerDistances) {
+          elements.forEach(element => {
+            triggerDistances.forEach((distance, index) => {
+              const className = `scrolled${index ? index + 1 : ''}`;
+              if (scrollY > distance) {
+                if (!element.classList.contains(className)) {
+                  addTransition(element);
+                  element.classList.add(className);
+                }
+              } else {
+                if (element.classList.contains(className)) {
+                  addTransition(element);
+                  element.classList.remove(className);
+                  removeTransition(element);
+                }
+              }
+            });
+          });
+        }
+
+        const scrollY = window.scrollY;
+        const triggerDistances = [triggerDistance, triggerDistance2, triggerDistance3];
+        manageScrollAnimations(animationElements, scrollY, triggerDistances);
+        manageScrollAnimations(photo2, scrollY, [triggerDistance]);
+        manageScrollAnimations(animationsText, scrollY, [triggerDistance2]);
+        manageScrollAnimations(qr_phone, scrollY, [triggerDistance3]);
       });
     </script>
 
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.9/fullpage.min.js"></script>
     <script>
       $(document).ready(function() {
-        $('#fullpage').fullpage({
-          scrollBar: true,
-          normalScrollElements: '#scrollable',
-          scrollingSpeed: 1500,
+        new fullpage('#fullpage', {
+          autoScrolling:true,
+          scrollHorizontally: true
         });
       });
     </script>
