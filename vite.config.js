@@ -3,5 +3,13 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
     plugins: [react()],
-    base: "/yoki-landing/"
+    base: "/yoki-landing/",
+    build: {
+        outDir: 'docs',
+    },
 })
+
+
+
+
+
