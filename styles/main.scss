@@ -160,7 +160,7 @@ section {
   .text-content {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 30vw;
   }
 }
 
@@ -300,10 +300,20 @@ section {
   left: 50%;
   transform: translateX(-50%);
 
+  .auto-height-width {
+    width: auto;
+    height: auto;
+    transition: transform 1s, width 1s, top 1s;
+  }
+
+  .full-screen-height {
+    height: 95vh;
+    transition: transform 1s, width 1s, top 1s;
+  }
+
   &.scrolled {
+    top: 2%;
     transform: translate(-50%, 100vh);
-    width: 24vw;
-    top: 5%;
   }
 
   &.scrolled2 {
@@ -313,9 +323,19 @@ section {
   }
 
   &.scrolled3 {
-    width: 24vw;
     transform: translate(-50%, 300vh);
     transition: 1s;
+  }
+
+  &.scrolled4 {
+    transform: translate(-50%, 400vh);
+    transition: 1s;
+  }
+
+  &.scrolled5 {
+    transform: translate(-8vw, 500vh);
+    transition: 1s;
+    width: 55vw;
   }
 
   .phone {
@@ -327,7 +347,6 @@ section {
       //border: 2px solid black;
       border-radius: 4.8vh;
       overflow: hidden;
-      background: black;
 
       img {
         position: absolute;
@@ -351,6 +370,16 @@ section {
           transition: 1s;
         }
       }
+
+      .photo3 {
+        transform: translate(-50%, 100%);
+        scale: 0.93;
+
+        &.scrolled {
+          transform: translate(-50%, -2.4%);
+          transition: 1s;
+        }
+      }
     }
 
     #phone_container {
@@ -361,7 +390,6 @@ section {
     }
   }
 }
-
 
 .qr_phone {
   position: absolute;

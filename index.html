@@ -17,6 +17,7 @@
         <div class="content">
           <img src="/phone_screens/photo_scenes/zero.png" class="photo1" alt="">
           <img src="/phone_screens/photo_scenes/Group3.png" class="photo2" alt="">
+          <img src="/phone_screens/photo_scenes/second_screen.png" class="photo3" alt="">
         </div>
         <img id="phone_container" src="/phone_screens/PIxelTransparent.png" alt="">
       </div>
@@ -186,12 +187,10 @@
         isScrolling = true;
 
         const targetPosition = sections[index].offsetTop;
-        console.log(`Moving to section ${index}, target position: ${targetPosition}px`);
 
         smoothScroll(targetPosition);
 
         const targetPhonePosition = index * 100;
-        console.log(`Phone animation starts to translateY(${targetPhonePosition}vh)`);
 
         setTimeout(() => {
           isScrolling = false;
@@ -230,10 +229,13 @@
       const animationsText = document.querySelectorAll('.tell_text');
       const qr_phone = document.querySelectorAll('.qr_phone');
       const photo2 = document.querySelectorAll('.photo2');
+      const photo3 = document.querySelectorAll('.photo3');
 
       const triggerDistance = window.innerHeight - 400;
       const triggerDistance2 = window.innerHeight * 2 - 400;
       const triggerDistance3 = window.innerHeight * 3 - 400;
+      const triggerDistance4 = window.innerHeight * 4 - 400;
+      const triggerDistance5 = window.innerHeight * 5 - 400;
 
       function addTransition(element) {
         element.style.transition = 'transform 1s, width 1s, top 1s';
@@ -249,26 +251,67 @@
         elements.forEach(element => {
           triggerDistances.forEach((distance, index) => {
             const className = `scrolled${index ? index + 1 : ''}`;
-            if (scrollY > distance) {
+            const isScrolledPast = scrollY > distance;
+            const isAnimationElement = Array.from(animationElements).includes(element);
+            const isTriggerDistance = distance === triggerDistance;
+            const isTriggerDistance2 = distance === triggerDistance2;
+            const isTriggerDistance3 = distance === triggerDistance3;
+            const isTriggerDistance4 = distance === triggerDistance4;
+            const isTriggerDistance5 = distance === triggerDistance5;
+
+            if (isScrolledPast) {
               if (!element.classList.contains(className)) {
                 addTransition(element);
                 element.classList.add(className);
+
+                if (isAnimationElement) {
+                  if (isTriggerDistance || isTriggerDistance4 || isTriggerDistance3) {
+                    setElementToFullScreen(element);
+                  } else if (isTriggerDistance2 || isTriggerDistance5 || isTriggerDistance4) {
+                    resetElementSize(element);
+                  }
+                }
               }
             } else {
               if (element.classList.contains(className)) {
                 addTransition(element);
                 element.classList.remove(className);
                 removeTransition(element);
+
+                if (isAnimationElement) {
+                  if (isTriggerDistance2 || isTriggerDistance5 || isTriggerDistance4) {
+                    setElementToFullScreen(element);
+                  } else if (isTriggerDistance || isTriggerDistance4 || isTriggerDistance5) {
+                    resetElementSize(element);
+                  }
+                }
               }
             }
           });
         });
       }
 
+      function setElementToFullScreen(element) {
+        element.classList.add('auto-height-width');
+        const screenHeight = window.innerHeight;
+        const elementHeight = element.offsetHeight;
+        const widthToHeightRatio = element.offsetWidth / elementHeight;
+        const desiredWidth = screenHeight * widthToHeightRatio;
+        element.style.width = `${desiredWidth - desiredWidth * 0.05}px`;
+        element.classList.add('full-screen-height');
+      }
+
+      function resetElementSize(element) {
+        element.classList.remove('auto-height-width');
+        element.classList.remove('full-screen-height');
+        element.style.width = '';
+      }
+
       const scrollY = window.scrollY;
-      const triggerDistances = [triggerDistance, triggerDistance2, triggerDistance3];
+      const triggerDistances = [triggerDistance, triggerDistance2, triggerDistance3, triggerDistance4, triggerDistance5];
       manageScrollAnimations(animationElements, scrollY, triggerDistances);
       manageScrollAnimations(photo2, scrollY, [triggerDistance]);
+      manageScrollAnimations(photo3, scrollY, [triggerDistance4]);
       manageScrollAnimations(animationsText, scrollY, [triggerDistance2]);
       manageScrollAnimations(qr_phone, scrollY, [triggerDistance3]);
     });
