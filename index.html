@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./styles/style.scss">
     <link rel="stylesheet" href="./styles/default.scss">
     <link rel="stylesheet" href="./styles/main.scss">
+    <link rel="stylesheet" href="./components/footer/footer.scss">
   </head>
   <body>
     <div class="phone-container">
@@ -18,6 +19,10 @@
           <img src="/phone_screens/photo_scenes/zero.png" class="photo1" alt="">
           <img src="/phone_screens/photo_scenes/Group3.png" class="photo2" alt="">
           <img src="/phone_screens/photo_scenes/second_screen.png" class="photo3" alt="">
+          <img src="/phone_screens/photo_scenes/search_screen.png" class="photo4" alt="">
+          <img src="/phone_screens/photo_scenes/main_screen.png" class="photo5" alt="">
+          <img src="/phone_screens/photo_scenes/mine_screen.png" class="photo6" alt="">
+          <img src="/phone_screens/photo_scenes/profile_screen.png" class="photo7" alt="">
         </div>
         <img id="phone_container" src="/phone_screens/PIxelTransparent.png" alt="">
       </div>
@@ -154,6 +159,7 @@
     <script type="module" src="./components/footer/footer.js"></script>
 
   <script >
+
     document.addEventListener('DOMContentLoaded', () => {
       const sections = document.querySelectorAll('.section');
       let currentSectionIndex = 0;
@@ -224,18 +230,37 @@
       moveToSection(currentSectionIndex);
     });
 
+    function setElementToFullScreen(element) {
+      element.classList.add('auto-height-width');
+      const screenHeight = window.innerHeight;
+      const elementHeight = element.offsetHeight;
+      const widthToHeightRatio = element.offsetWidth / elementHeight;
+      const desiredWidth = screenHeight * widthToHeightRatio;
+      element.style.width = `${desiredWidth - desiredWidth * 0.05}px`;
+      element.classList.add('full-screen-height');
+    }
+
+
     window.addEventListener('scroll', () => {
       const animationElements = document.querySelectorAll('.phone-container');
       const animationsText = document.querySelectorAll('.tell_text');
       const qr_phone = document.querySelectorAll('.qr_phone');
       const photo2 = document.querySelectorAll('.photo2');
       const photo3 = document.querySelectorAll('.photo3');
+      const photo4 = document.querySelectorAll('.photo4');
+      const photo5 = document.querySelectorAll('.photo5');
+      const photo6 = document.querySelectorAll('.photo6');
+      const photo7 = document.querySelectorAll('.photo7');
 
       const triggerDistance = window.innerHeight - 400;
       const triggerDistance2 = window.innerHeight * 2 - 400;
       const triggerDistance3 = window.innerHeight * 3 - 400;
       const triggerDistance4 = window.innerHeight * 4 - 400;
       const triggerDistance5 = window.innerHeight * 5 - 400;
+      const triggerDistance6 = window.innerHeight * 6 - 400;
+      const triggerDistance7 = window.innerHeight * 7 - 400;
+      const triggerDistance8 = window.innerHeight * 8 - 400;
+      const triggerDistance9 = window.innerHeight * 9 - 400;
 
       function addTransition(element) {
         element.style.transition = 'transform 1s, width 1s, top 1s';
@@ -258,6 +283,10 @@
             const isTriggerDistance3 = distance === triggerDistance3;
             const isTriggerDistance4 = distance === triggerDistance4;
             const isTriggerDistance5 = distance === triggerDistance5;
+            const isTriggerDistance6 = distance === triggerDistance6;
+            const isTriggerDistance7 = distance === triggerDistance7;
+            const isTriggerDistance8 = distance === triggerDistance8;
+            const isTriggerDistance9 = distance === triggerDistance9;
 
             if (isScrolledPast) {
               if (!element.classList.contains(className)) {
@@ -265,9 +294,11 @@
                 element.classList.add(className);
 
                 if (isAnimationElement) {
-                  if (isTriggerDistance || isTriggerDistance4 || isTriggerDistance3) {
+                  if (isTriggerDistance || isTriggerDistance4 || isTriggerDistance3
+                      || isTriggerDistance6 || isTriggerDistance9) {
                     setElementToFullScreen(element);
-                  } else if (isTriggerDistance2 || isTriggerDistance5 || isTriggerDistance4) {
+                  } else if (isTriggerDistance2 || isTriggerDistance5 || isTriggerDistance4
+                          || isTriggerDistance8) {
                     resetElementSize(element);
                   }
                 }
@@ -279,9 +310,11 @@
                 removeTransition(element);
 
                 if (isAnimationElement) {
-                  if (isTriggerDistance2 || isTriggerDistance5 || isTriggerDistance4) {
+                  if (isTriggerDistance2 || isTriggerDistance5 || isTriggerDistance4
+                          || isTriggerDistance7 || isTriggerDistance8) {
                     setElementToFullScreen(element);
-                  } else if (isTriggerDistance || isTriggerDistance4 || isTriggerDistance5) {
+                  } else if (isTriggerDistance || isTriggerDistance3 || isTriggerDistance4 || isTriggerDistance5
+                          || isTriggerDistance6 || isTriggerDistance9) {
                     resetElementSize(element);
                   }
                 }
@@ -291,16 +324,6 @@
         });
       }
 
-      function setElementToFullScreen(element) {
-        element.classList.add('auto-height-width');
-        const screenHeight = window.innerHeight;
-        const elementHeight = element.offsetHeight;
-        const widthToHeightRatio = element.offsetWidth / elementHeight;
-        const desiredWidth = screenHeight * widthToHeightRatio;
-        element.style.width = `${desiredWidth - desiredWidth * 0.05}px`;
-        element.classList.add('full-screen-height');
-      }
-
       function resetElementSize(element) {
         element.classList.remove('auto-height-width');
         element.classList.remove('full-screen-height');
@@ -308,10 +331,18 @@
       }
 
       const scrollY = window.scrollY;
-      const triggerDistances = [triggerDistance, triggerDistance2, triggerDistance3, triggerDistance4, triggerDistance5];
+      const triggerDistances = [
+              triggerDistance, triggerDistance2, triggerDistance3, triggerDistance4,
+              triggerDistance5, triggerDistance6, triggerDistance7, triggerDistance8,
+              triggerDistance9
+      ];
       manageScrollAnimations(animationElements, scrollY, triggerDistances);
       manageScrollAnimations(photo2, scrollY, [triggerDistance]);
       manageScrollAnimations(photo3, scrollY, [triggerDistance4]);
+      manageScrollAnimations(photo4, scrollY, [triggerDistance5]);
+      manageScrollAnimations(photo5, scrollY, [triggerDistance6]);
+      manageScrollAnimations(photo6, scrollY, [triggerDistance7]);
+      manageScrollAnimations(photo7, scrollY, [triggerDistance9]);
       manageScrollAnimations(animationsText, scrollY, [triggerDistance2]);
       manageScrollAnimations(qr_phone, scrollY, [triggerDistance3]);
     });
