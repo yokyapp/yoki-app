@@ -309,13 +309,11 @@
 
     &.scrolled {
       top: 2%;
-      transform: translate(-10%, 100vh);
-
-
+      transform: translate(-10%, 100svh);
     }
 
     &.scrolled2 {
-      transform: translate(-50%, 250vh);
+      transform: translate(-50%, 250svh);
       transition: 1s;
       width: 80vw;
 
@@ -327,7 +325,7 @@
     }
 
     &.scrolled3 {
-      transform: translate(-50%, 320vh);
+      transform: translate(-50%, 320svh);
       transition: 1s;
       width: 80vw !important;
 
@@ -339,12 +337,12 @@
     }
 
     &.scrolled4 {
-      transform: translate(-50%, 420vh);
+      transform: translate(-50%, 420svh);
       transition: 1s;
     }
 
     &.scrolled5 {
-      transform: translate(-50%, 540vh);
+      transform: translate(-50%, 540svh);
       transition: 1s;
 
       .phone {
@@ -355,7 +353,7 @@
     }
 
     &.scrolled6 {
-      transform: translate(-50%, 620vh);
+      transform: translate(-50%, 620svh);
       transition: 1s;
 
       .phone {
@@ -366,7 +364,7 @@
     }
 
     &.scrolled7 {
-      transform: translate(-50%, 730vh);
+      transform: translate(-50%, 730svh);
       transition: 1s;
 
       .phone {
@@ -377,7 +375,7 @@
     }
 
     &.scrolled8 {
-      transform: translate(-50%, 745vh);
+      transform: translate(-50%, 745svh);
       transition: 1s;
       width: 55vw;
 
@@ -389,7 +387,7 @@
     }
 
     &.scrolled9 {
-      transform: translate(-10%, 900vh);
+      transform: translate(-10%, 900s vh);
       transition: 1s;
 
       .phone {
