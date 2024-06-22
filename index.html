@@ -329,7 +329,7 @@
 
                 if (isAnimationElement) {
                   if (isTriggerDistance || isTriggerDistance4 || isTriggerDistance3
-                      || isTriggerDistance6 || isTriggerDistance9) {
+                          || isTriggerDistance6 || isTriggerDistance9) {
                     setElementToFullScreen(element);
                   } else if (isTriggerDistance2 || isTriggerDistance5 || isTriggerDistance4
                           || isTriggerDistance8) {
@@ -366,9 +366,9 @@
 
       const scrollY = window.scrollY;
       const triggerDistances = [
-              triggerDistance, triggerDistance2, triggerDistance3, triggerDistance4,
-              triggerDistance5, triggerDistance6, triggerDistance7, triggerDistance8,
-              triggerDistance9
+        triggerDistance, triggerDistance2, triggerDistance3, triggerDistance4,
+        triggerDistance5, triggerDistance6, triggerDistance7, triggerDistance8,
+        triggerDistance9
       ];
       manageScrollAnimations(animationElements, scrollY, triggerDistances);
       manageScrollAnimations(photo2, scrollY, [triggerDistance]);
@@ -380,6 +380,9 @@
       manageScrollAnimations(animationsText, scrollY, [triggerDistance2]);
       manageScrollAnimations(qr_phone, scrollY, [triggerDistance3]);
     });
+
+
+
 
   </script>
   </body>
