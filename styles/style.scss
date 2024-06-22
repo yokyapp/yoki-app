@@ -55,3 +55,16 @@ p {
 .primary-black-text {
   color: $primaryBlack;
 }
+
+@media (max-width: 768px) {
+  h2 {
+    font-size: 5.9vw;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  p {
+    font-size: 4.5vw;
+  }
+}

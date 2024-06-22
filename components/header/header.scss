@@ -10,16 +10,50 @@ header {
     align-items: center;
     gap: 10px;
 
+    svg {
+      width: 3vw;
+    }
+
     color: $primaryBlack;
-    font-size: 1.5rem;
+    //font-size: 1.5rem;
+    font-size: 1.3vw;
     font-weight: 700;
   }
 
   .stay-tuned {
     background: $primaryYellow;
     border-radius: 37px;
-    padding: 16px 50px;
+    padding: 0.85vw 2.7vw;
     color: $primaryWhite;
-    font-size: 1.563rem;
+    //font-size: 1.563rem;
+    font-size: 1.363vw;
   }
+}
+
+@media (max-width: 768px) {
+  header {
+    justify-content: space-between;
+    padding: 20px 25px;
+
+    .language-change {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      img {
+        width: 8vw;
+      }
+
+      //font-size: 1.5rem;
+      font-size: 5vw;
+    }
+
+    .stay-tuned {
+      padding: 2.1vw 7.2vw;
+      color: $primaryWhite;
+      //font-size: 1.563rem;
+      font-size: 4vw;
+    }
+  }
+
 }
