@@ -7,8 +7,8 @@
     <title>Vite App</title>
     <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&display=swap" rel="stylesheet">
 
-    <script type="module" crossorigin src="/yoki-landing/assets/index-B5leEAA0.js"></script>
-    <link rel="stylesheet" crossorigin href="/yoki-landing/assets/index-Cgzhsggs.css">
+    <script type="module" crossorigin src="/yoki-landing/assets/index-CFGeosjW.js"></script>
+    <link rel="stylesheet" crossorigin href="/yoki-landing/assets/index-BxnUF6xd.css">
   </head>
   <body>
     <div class="phone-container">
@@ -160,9 +160,12 @@
       const sections = document.querySelectorAll('.section');
       let currentSectionIndex = 0;
       let isScrolling = false;
+      let touchStartY = 0;
 
-      const scrollDuration = 700;
+      const scrollSensitivity = 1.5; // Higher value for more sensitive scrolling
+      const scrollDuration = 700;    // Duration of smooth scroll animation
 
+      // Custom smooth scroll function
       const smoothScroll = (targetPosition) => {
         const startPosition = window.pageYOffset;
         const distance = targetPosition - startPosition;
@@ -192,10 +195,13 @@
 
         smoothScroll(targetPosition);
 
-        const targetPhonePosition = index * 100;
+        // Animate the phone movement with the scroll
+        const targetPhonePosition = index * 100; // Each section is 100vh tall
+        console.log(`Phone animation starts to translateY(${targetPhonePosition}vh)`);
 
         setTimeout(() => {
           isScrolling = false;
+          // Optionally, reset the transition property
         }, scrollDuration);
       };
 
@@ -211,30 +217,29 @@
         }
       };
 
-      let startY;
-
       const handleTouchStart = (event) => {
-        startY = event.touches[0].clientY;
+        touchStartY = event.touches[0].clientY;
       };
 
       const handleTouchMove = (event) => {
-        if (isScrolling) return;
-        const endY = event.touches[0].clientY;
-        const distanceY = startY - endY;
+        event.preventDefault(); // Prevent default scrolling
+      };
 
-        if (Math.abs(distanceY) > 50) { // Minimum swipe distance
-          const direction = distanceY > 0 ? 1 : -1;
-          if ((direction > 0 && currentSectionIndex < sections.length - 1) || (direction < 0 && currentSectionIndex > 0)) {
-            currentSectionIndex += direction;
-            moveToSection(currentSectionIndex);
-          }
-          startY = null;
+      const handleTouchEnd = (event) => {
+        const touchEndY = event.changedTouches[0].clientY;
+        const direction = touchStartY - touchEndY > 0 ? 1 : -1;
+        if (isScrolling) return;
+
+        if ((direction > 0 && currentSectionIndex < sections.length - 1) || (direction < 0 && currentSectionIndex > 0)) {
+          currentSectionIndex += direction;
+          moveToSection(currentSectionIndex);
         }
       };
 
       window.addEventListener('wheel', handleScroll, { passive: false });
       window.addEventListener('touchstart', handleTouchStart, { passive: true });
       window.addEventListener('touchmove', handleTouchMove, { passive: false });
+      window.addEventListener('touchend', handleTouchEnd, { passive: true });
 
       const resizeSections = () => {
         const viewportHeight = window.innerHeight;
@@ -244,10 +249,15 @@
       };
 
       window.addEventListener('resize', resizeSections);
-      resizeSections();
+      resizeSections(); // Initial setup
 
+      // Scroll to the first section on load
       moveToSection(currentSectionIndex);
     });
+
+
+
+
 
     function setElementToFullScreen(element) {
       element.classList.add('auto-height-width');
@@ -258,7 +268,6 @@
       element.style.width = `${desiredWidth - desiredWidth * 0.05}px`;
       element.classList.add('full-screen-height');
     }
-
 
     window.addEventListener('scroll', () => {
       const animationElements = document.querySelectorAll('.phone-container');

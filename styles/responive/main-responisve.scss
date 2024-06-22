@@ -72,16 +72,20 @@
       border: 0.387px solid rgba(255, 255, 255, 0.10);
       background: rgba(255, 255, 255, 0.77);
       backdrop-filter: blur(1.5px);
+      gap: 32px;
 
       .tell_text {
         width: 100%;
       }
 
       &.scrolled {
+        transition: 0.7s !important;
+        transform: translate(18%, 80vh);
       }
 
       h2 {
         width: 100%;
+        margin: 0;
       }
 
       .paragraphs-content {
@@ -287,13 +291,113 @@
 
 
   .phone-container {
-    display: none;
+    width: 80vw;
+    top: 60vh;
+    z-index: -1;
+
+    .phone {
+      .content {
+        border-radius: 8.5vw !important;
+      }
+    }
+
     .auto-height-width {
     }
 
     .full-screen-height {
     }
 
+    &.scrolled {
+      top: 2%;
+      transform: translate(-10%, 100vh);
+
+
+    }
+
+    &.scrolled2 {
+      transform: translate(-50%, 250vh);
+      transition: 1s;
+      width: 80vw;
+
+      .phone {
+        .content {
+          border-radius: 6.5vw;
+        }
+      }
+    }
+
+    &.scrolled3 {
+      transform: translate(-50%, 320vh);
+      transition: 1s;
+      width: 80vw !important;
+
+      .phone {
+        .content {
+          border-radius: 5vw;
+        }
+      }
+    }
+
+    &.scrolled4 {
+      transform: translate(-50%, 420vh);
+      transition: 1s;
+    }
+
+    &.scrolled5 {
+      transform: translate(-50%, 540vh);
+      transition: 1s;
+
+      .phone {
+        .content {
+          border-radius: 6.5vw;
+        }
+      }
+    }
+
+    &.scrolled6 {
+      transform: translate(-50%, 620vh);
+      transition: 1s;
+
+      .phone {
+        .content {
+          border-radius: 5vw;
+        }
+      }
+    }
+
+    &.scrolled7 {
+      transform: translate(-50%, 730vh);
+      transition: 1s;
+
+      .phone {
+        .content {
+          border-radius: 5vw;
+        }
+      }
+    }
+
+    &.scrolled8 {
+      transform: translate(-50%, 745vh);
+      transition: 1s;
+      width: 55vw;
+
+      .phone {
+        .content {
+          border-radius: 6.5vw;
+        }
+      }
+    }
+
+    &.scrolled9 {
+      transform: translate(-10%, 900vh);
+      transition: 1s;
+
+      .phone {
+        .content {
+          border-radius: 5vw;
+        }
+      }
+    }
 
     .phone {
       .content {
