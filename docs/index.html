@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
     <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&display=swap" rel="stylesheet">
-
-    <script type="module" crossorigin src="/yoki-landing/assets/index-DUpiuamB.js"></script>
-    <link rel="stylesheet" crossorigin href="/yoki-landing/assets/index-CWPIhOin.css">
+
+    <script type="module" crossorigin src="/yoki-landing/assets/index-Do78nOfl.js"></script>
+    <link rel="stylesheet" crossorigin href="/yoki-landing/assets/index-CKMZE83D.css">
   </head>
   <body>
     <div class="phone-container">
@@ -67,7 +67,7 @@
         </div>
       </div>
     </section>
-    <section id="section3" class="about-section section">
+    <section id="section3" class=" section">
 
     </section>
     <section id="section4" class="search-more-section section">
@@ -123,7 +123,7 @@
         <h2>Розгорни Свої Можливості — <br><span class="yellow-span-text">Час Діяти!</span></h2>
       </div>
     </section>
-    <section id="section17" class="section">
+    <section id="section12" class="section">
       <footer id="footer">
         <div class="links">
           <a href="" class="soc-media">
@@ -161,7 +161,6 @@
       let currentSectionIndex = 0;
       let isScrolling = false;
 
-      const scrollSensitivity = 1.5;
       const scrollDuration = 700;
 
       const smoothScroll = (targetPosition) => {
@@ -189,6 +188,7 @@
         isScrolling = true;
 
         const targetPosition = sections[index].offsetTop;
+        console.log(`Moving to section ${index}, target position: ${targetPosition}px`);
 
         smoothScroll(targetPosition);
 
@@ -211,7 +211,30 @@
         }
       };
 
+      let startY;
+
+      const handleTouchStart = (event) => {
+        startY = event.touches[0].clientY;
+      };
+
+      const handleTouchMove = (event) => {
+        if (isScrolling) return;
+        const endY = event.touches[0].clientY;
+        const distanceY = startY - endY;
+
+        if (Math.abs(distanceY) > 50) { // Minimum swipe distance
+          const direction = distanceY > 0 ? 1 : -1;
+          if ((direction > 0 && currentSectionIndex < sections.length - 1) || (direction < 0 && currentSectionIndex > 0)) {
+            currentSectionIndex += direction;
+            moveToSection(currentSectionIndex);
+          }
+          startY = null;
+        }
+      };
+
       window.addEventListener('wheel', handleScroll, { passive: false });
+      window.addEventListener('touchstart', handleTouchStart, { passive: true });
+      window.addEventListener('touchmove', handleTouchMove, { passive: false });
 
       const resizeSections = () => {
         const viewportHeight = window.innerHeight;

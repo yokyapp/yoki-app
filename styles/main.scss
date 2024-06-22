@@ -32,6 +32,10 @@ section {
       &:first-child {
         width: 28%;
         margin-top: 3%;
+
+        h2 {
+          line-height: 3.52vw;
+        }
       }
 
       &:last-child {
@@ -53,16 +57,20 @@ section {
           width: 70%;
 
           p:first-child {
-            font-size: 2.438rem;
+            //font-size: 2.438rem;
+            font-size: 2.1vw;
             font-weight: 400;
-            line-height: 2.688rem;
+            //line-height: 2.688rem;
+            line-height: 2.2vw;
           }
 
           p:last-child {
             color: $primaryBlack;
-            font-size: 3.188rem;
+            //font-size: 3.188rem;
+            font-size: 2.6vw;
             font-weight: 700;
-            line-height: 3.313rem;
+            //line-height: 3.313rem;
+            line-height: 2.8vw;
           }
         }
       }
@@ -319,11 +327,23 @@ section {
     transform: translate(-8vw, 200vh);
     transition: 1s;
     width: 55vw;
+
+    .phone {
+      .content {
+        border-radius: 6.5vw;
+      }
+    }
   }
 
   &.scrolled3 {
     transform: translate(-50%, 300vh);
     transition: 1s;
+
+    .phone {
+      .content {
+        border-radius: 5vw;
+      }
+    }
   }
 
   &.scrolled4 {
@@ -335,27 +355,57 @@ section {
     transform: translate(-8vw, 500vh);
     transition: 1s;
     width: 55vw;
+
+    .phone {
+      .content {
+        border-radius: 6.5vw;
+      }
+    }
   }
 
   &.scrolled6 {
     transform: translate(-50%, 600vh);
     transition: 1s;
+
+    .phone {
+      .content {
+        border-radius: 5vw;
+      }
+    }
   }
 
   &.scrolled7 {
     transform: translate(-50%, 700vh);
     transition: 1s;
+
+    .phone {
+      .content {
+        border-radius: 5vw;
+      }
+    }
   }
 
   &.scrolled8 {
     transform: translate(-8vw, 675vh);
     transition: 1s;
     width: 55vw;
+
+    .phone {
+      .content {
+        border-radius: 6.5vw;
+      }
+    }
   }
 
   &.scrolled9 {
     transform: translate(-50%, 900vh);
     transition: 1s;
+
+    .phone {
+      .content {
+        border-radius: 5vw;
+      }
+    }
   }
 
   .phone {
@@ -363,10 +413,12 @@ section {
       position: absolute;
       top: 0;
       height: 100%;
-      width: 99%;
-      //border: 2px solid black;
-      border-radius: 4.8vh;
+      width: 98%;
+      left: 3px;
+      border: 2px solid black;
+      border-radius: 5vw;
       overflow: hidden;
+      background: pink;
 
       img {
         position: absolute;
@@ -375,18 +427,18 @@ section {
         width: 100%;
         z-index: 1;
         transform-origin: left;
-        scale: 0.94;
+        scale: 0.98;
       }
 
       .photo1 {
-        transform: translate(-50%, -1.04%);
+        transform: translate(-50%, -0.04%);
       }
 
       .photo2 {
         transform: translate(-50%, 100%);
 
         &.scrolled {
-          transform: translate(-50%, -1.04%);
+          transform: translate(-50%, -0.04%);
           transition: 1s;
         }
       }
@@ -396,7 +448,7 @@ section {
         scale: 0.93;
 
         &.scrolled {
-          transform: translate(-50%, -2.4%);
+          transform: translate(-50%, -1.5%);
           transition: 1s;
         }
       }
@@ -406,7 +458,7 @@ section {
         scale: 0.93;
 
         &.scrolled {
-          transform: translate(-50%, -2.4%);
+          transform: translate(-50%, -1.5%);
           transition: 1s;
         }
       }
@@ -416,7 +468,7 @@ section {
         scale: 0.93;
 
         &.scrolled {
-          transform: translate(-50%, -2.4%);
+          transform: translate(-50%, -1.5%);
           transition: 1s;
         }
       }
@@ -426,7 +478,7 @@ section {
         scale: 0.93;
 
         &.scrolled {
-          transform: translate(-50%, -2.4%);
+          transform: translate(-50%, -1.5%);
           transition: 1s;
         }
       }
@@ -436,7 +488,7 @@ section {
         scale: 0.93;
 
         &.scrolled {
-          transform: translate(-50%, -2.4%);
+          transform: translate(-50%, -1.5%);
           transition: 1s;
         }
       }
@@ -446,7 +498,7 @@ section {
       position: relative;
       width: 100%;
       z-index: 2;
-      //opacity: 0;
+      opacity: 1;
     }
   }
 }

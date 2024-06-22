@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./styles/style.scss">
     <link rel="stylesheet" href="./styles/default.scss">
     <link rel="stylesheet" href="./styles/main.scss">
+    <link rel="stylesheet" href="./components/header/header.scss">
     <link rel="stylesheet" href="./components/footer/footer.scss">
   </head>
   <body>
@@ -69,7 +70,7 @@
         </div>
       </div>
     </section>
-    <section id="section3" class="about-section section">
+    <section id="section3" class=" section">
 
     </section>
     <section id="section4" class="search-more-section section">
@@ -125,7 +126,7 @@
         <h2>Розгорни Свої Можливості — <br><span class="yellow-span-text">Час Діяти!</span></h2>
       </div>
     </section>
-    <section id="section17" class="section">
+    <section id="section12" class="section">
       <footer id="footer">
         <div class="links">
           <a href="" class="soc-media">
@@ -165,7 +166,6 @@
       let currentSectionIndex = 0;
       let isScrolling = false;
 
-      const scrollSensitivity = 1.5;
       const scrollDuration = 700;
 
       const smoothScroll = (targetPosition) => {
@@ -193,6 +193,7 @@
         isScrolling = true;
 
         const targetPosition = sections[index].offsetTop;
+        console.log(`Moving to section ${index}, target position: ${targetPosition}px`);
 
         smoothScroll(targetPosition);
 
@@ -215,7 +216,30 @@
         }
       };
 
+      let startY;
+
+      const handleTouchStart = (event) => {
+        startY = event.touches[0].clientY;
+      };
+
+      const handleTouchMove = (event) => {
+        if (isScrolling) return;
+        const endY = event.touches[0].clientY;
+        const distanceY = startY - endY;
+
+        if (Math.abs(distanceY) > 50) { // Minimum swipe distance
+          const direction = distanceY > 0 ? 1 : -1;
+          if ((direction > 0 && currentSectionIndex < sections.length - 1) || (direction < 0 && currentSectionIndex > 0)) {
+            currentSectionIndex += direction;
+            moveToSection(currentSectionIndex);
+          }
+          startY = null;
+        }
+      };
+
       window.addEventListener('wheel', handleScroll, { passive: false });
+      window.addEventListener('touchstart', handleTouchStart, { passive: true });
+      window.addEventListener('touchmove', handleTouchMove, { passive: false });
 
       const resizeSections = () => {
         const viewportHeight = window.innerHeight;
