@@ -431,6 +431,10 @@
       .content {
         border-radius: 5vw;
 
+        .photo3 {
+          display: block;
+        }
+
         .photo5 {
           display: block;
         }
@@ -450,8 +454,15 @@
       .content {
         border-radius: 5vw;
 
+        .photo3 {
+          display: none;
+        }
 
         .photo4 {
+          display: none;
+        }
+
+        .photo5 {
           display: none;
         }
 
