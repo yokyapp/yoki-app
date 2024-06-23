@@ -7,8 +7,8 @@
     <title>Vite App</title>
     <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&display=swap" rel="stylesheet">
 
-    <script type="module" crossorigin src="/yoki-landing/assets/index-D_iLfoBh.js"></script>
-    <link rel="stylesheet" crossorigin href="/yoki-landing/assets/index-CTmKtw6h.css">
+    <script type="module" crossorigin src="/yoki-landing/assets/index-DStc_4zU.js"></script>
+    <link rel="stylesheet" crossorigin href="/yoki-landing/assets/index-DTD0ysNh.css">
   </head>
   <body>
     <div class="phone-container">
@@ -16,11 +16,11 @@
         <div class="content">
           <img src="/yoki-landing/phone_screens/photo_scenes/webp_format/zero.webp" class="photo photo1" loading="lazy" alt="">
           <img src="/yoki-landing/phone_screens/photo_scenes/webp_format/Group3.webp" class="photo photo2" loading="lazy" alt="">
-          <img src="/yoki-landing/phone_screens/photo_scenes/webp_format/second_screen.webp" class="photo photo3" loading="lazy" alt="">
-          <img src="/yoki-landing/phone_screens/photo_scenes/webp_format/search_screen.webp" class="photo photo4" loading="lazy" alt="">
-          <img src="/yoki-landing/phone_screens/photo_scenes/webp_format/main_screen.webp" class="photo photo5" loading="lazy" alt="">
-          <img src="/yoki-landing/phone_screens/photo_scenes/webp_format/mine_screen.webp" class="photo photo6" loading="lazy" alt="">
-          <img src="/yoki-landing/phone_screens/photo_scenes/webp_format/profile_screen.webp" class="photo photo7" loading="lazy" alt="">
+<!--          <img src="/phone_screens/photo_scenes/webp_format/second_screen.webp" class="photo photo3" loading="lazy" alt="">-->
+<!--          <img src="/phone_screens/photo_scenes/webp_format/search_screen.webp" class="photo photo4" loading="lazy" alt="">-->
+<!--          <img src="/phone_screens/photo_scenes/webp_format/main_screen.webp" class="photo photo5" loading="lazy" alt="">-->
+<!--          <img src="/phone_screens/photo_scenes/webp_format/mine_screen.webp" class="photo photo6" loading="lazy" alt="">-->
+<!--          <img src="/phone_screens/photo_scenes/webp_format/profile_screen.webp" class="photo photo7" loading="lazy" alt="">-->
         </div>
         <img id="phone_container" src="/yoki-landing/phone_screens/photo_scenes/pixel8.png" alt="">
       </div>
@@ -256,13 +256,13 @@
     });
 
     function setElementToFullScreen(element) {
-      // element.classList.add('auto-height-width');
-      // const screenHeight = window.innerHeight;
-      // const elementHeight = element.offsetHeight;
-      // const widthToHeightRatio = element.offsetWidth / elementHeight;
-      // const desiredWidth = screenHeight * widthToHeightRatio;
-      // element.style.width = `${desiredWidth - desiredWidth * 0.05}px`;
-      // element.classList.add('full-screen-height');
+      element.classList.add('auto-height-width');
+      const screenHeight = window.innerHeight;
+      const elementHeight = element.offsetHeight;
+      const widthToHeightRatio = element.offsetWidth / elementHeight;
+      const desiredWidth = screenHeight * widthToHeightRatio;
+      element.style.width = `${desiredWidth - desiredWidth * 0.05}px`;
+      element.classList.add('full-screen-height');
     }
 
     window.addEventListener('scroll', () => {

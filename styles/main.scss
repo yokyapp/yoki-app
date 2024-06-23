@@ -371,10 +371,6 @@
     .phone {
       .content {
         border-radius: 5vw;
-
-        .photo3 {
-          display: block;
-        }
       }
     }
   }
@@ -382,21 +378,6 @@
   &.scrolled4 {
     transform: translate(-50%, 400vh);
     transition: 1s;
-
-    .phone {
-      .content {
-        border-radius: 5vw;
-
-        .photo3 {
-          display: block;
-        }
-
-
-        .photo4 {
-          display: block;
-        }
-      }
-    }
   }
 
   &.scrolled5 {
@@ -407,18 +388,6 @@
     .phone {
       .content {
         border-radius: 6.5vw;
-
-        .photo2 {
-          display: none;
-        }
-
-        .photo4 {
-          display: block;
-        }
-
-        .photo5 {
-          display: block;
-        }
       }
     }
   }
@@ -430,18 +399,6 @@
     .phone {
       .content {
         border-radius: 5vw;
-
-        .photo3 {
-          display: block;
-        }
-
-        .photo5 {
-          display: block;
-        }
-
-        .photo6 {
-          display: block;
-        }
       }
     }
   }
@@ -453,26 +410,6 @@
     .phone {
       .content {
         border-radius: 5vw;
-
-        .photo3 {
-          display: none;
-        }
-
-        .photo4 {
-          display: none;
-        }
-
-        .photo5 {
-          display: none;
-        }
-
-        .photo6 {
-          display: block;
-        }
-
-        .photo7 {
-          display: block;
-        }
       }
     }
   }
@@ -485,11 +422,6 @@
     .phone {
       .content {
         border-radius: 6.5vw;
-
-
-        .photo7 {
-          display: block;
-        }
       }
     }
   }

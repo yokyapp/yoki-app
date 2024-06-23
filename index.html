@@ -20,11 +20,11 @@
         <div class="content">
           <img src="/phone_screens/photo_scenes/webp_format/zero.webp" class="photo photo1" loading="lazy" alt="">
           <img src="/phone_screens/photo_scenes/webp_format/Group3.webp" class="photo photo2" loading="lazy" alt="">
-          <img src="/phone_screens/photo_scenes/webp_format/second_screen.webp" class="photo photo3" loading="lazy" alt="">
-          <img src="/phone_screens/photo_scenes/webp_format/search_screen.webp" class="photo photo4" loading="lazy" alt="">
-          <img src="/phone_screens/photo_scenes/webp_format/main_screen.webp" class="photo photo5" loading="lazy" alt="">
-          <img src="/phone_screens/photo_scenes/webp_format/mine_screen.webp" class="photo photo6" loading="lazy" alt="">
-          <img src="/phone_screens/photo_scenes/webp_format/profile_screen.webp" class="photo photo7" loading="lazy" alt="">
+<!--          <img src="/phone_screens/photo_scenes/webp_format/second_screen.webp" class="photo photo3" loading="lazy" alt="">-->
+<!--          <img src="/phone_screens/photo_scenes/webp_format/search_screen.webp" class="photo photo4" loading="lazy" alt="">-->
+<!--          <img src="/phone_screens/photo_scenes/webp_format/main_screen.webp" class="photo photo5" loading="lazy" alt="">-->
+<!--          <img src="/phone_screens/photo_scenes/webp_format/mine_screen.webp" class="photo photo6" loading="lazy" alt="">-->
+<!--          <img src="/phone_screens/photo_scenes/webp_format/profile_screen.webp" class="photo photo7" loading="lazy" alt="">-->
         </div>
         <img id="phone_container" src="/phone_screens/photo_scenes/pixel8.png" alt="">
       </div>
@@ -262,13 +262,13 @@
     });
 
     function setElementToFullScreen(element) {
-      // element.classList.add('auto-height-width');
-      // const screenHeight = window.innerHeight;
-      // const elementHeight = element.offsetHeight;
-      // const widthToHeightRatio = element.offsetWidth / elementHeight;
-      // const desiredWidth = screenHeight * widthToHeightRatio;
-      // element.style.width = `${desiredWidth - desiredWidth * 0.05}px`;
-      // element.classList.add('full-screen-height');
+      element.classList.add('auto-height-width');
+      const screenHeight = window.innerHeight;
+      const elementHeight = element.offsetHeight;
+      const widthToHeightRatio = element.offsetWidth / elementHeight;
+      const desiredWidth = screenHeight * widthToHeightRatio;
+      element.style.width = `${desiredWidth - desiredWidth * 0.05}px`;
+      element.classList.add('full-screen-height');
     }
 
     window.addEventListener('scroll', () => {
