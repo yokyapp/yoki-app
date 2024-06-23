@@ -28,9 +28,9 @@
     <div class="qr_phone">
       <div class="phone">
         <div class="content">
-          <img src="/yoki-landing/phone_screens/photo_scenes/normal_format/qr_code.png" class="photo2" loading="lazy" alt="">
+          <img src="/phone_screens/photo_scenes/normal_format/qr_code.png" class="photo2" loading="lazy" alt="">
         </div>
-        <img src="/yoki-landing/phone_screens/photo_scenes/PIxelTransparent.png" alt="">
+        <img src="/phone_screens/photo_scenes/PIxelTransparent.png" alt="">
       </div>
     </div>
 
@@ -256,13 +256,13 @@
     });
 
     function setElementToFullScreen(element) {
-      element.classList.add('auto-height-width');
-      const screenHeight = window.innerHeight;
-      const elementHeight = element.offsetHeight;
-      const widthToHeightRatio = element.offsetWidth / elementHeight;
-      const desiredWidth = screenHeight * widthToHeightRatio;
-      element.style.width = `${desiredWidth - desiredWidth * 0.05}px`;
-      element.classList.add('full-screen-height');
+      // element.classList.add('auto-height-width');
+      // const screenHeight = window.innerHeight;
+      // const elementHeight = element.offsetHeight;
+      // const widthToHeightRatio = element.offsetWidth / elementHeight;
+      // const desiredWidth = screenHeight * widthToHeightRatio;
+      // element.style.width = `${desiredWidth - desiredWidth * 0.05}px`;
+      // element.classList.add('full-screen-height');
     }
 
     window.addEventListener('scroll', () => {
@@ -276,15 +276,17 @@
       const photo6 = document.querySelectorAll('.photo6');
       const photo7 = document.querySelectorAll('.photo7');
 
-      const triggerDistance = window.innerHeight - 400;
-      const triggerDistance2 = window.innerHeight * 2 - 400;
-      const triggerDistance3 = window.innerHeight * 3 - 400;
-      const triggerDistance4 = window.innerHeight * 4 - 400;
-      const triggerDistance5 = window.innerHeight * 5 - 400;
-      const triggerDistance6 = window.innerHeight * 6 - 400;
-      const triggerDistance7 = window.innerHeight * 7 - 400;
-      const triggerDistance8 = window.innerHeight * 8 - 400;
-      const triggerDistance9 = window.innerHeight * 9 - 400;
+      let dist = window.innerHeight * 0.1
+
+      const triggerDistance = window.innerHeight - dist;
+      const triggerDistance2 = window.innerHeight * 2 - dist;
+      const triggerDistance3 = window.innerHeight * 3 - dist;
+      const triggerDistance4 = window.innerHeight * 4 - dist;
+      const triggerDistance5 = window.innerHeight * 5 - dist;
+      const triggerDistance6 = window.innerHeight * 6 - dist;
+      const triggerDistance7 = window.innerHeight * 7 - dist;
+      const triggerDistance8 = window.innerHeight * 8 - dist;
+      const triggerDistance9 = window.innerHeight * 9 - dist;
 
       function addTransition(element) {
         element.style.transition = 'transform 1s, width 1s, top 1s';
