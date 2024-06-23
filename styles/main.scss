@@ -307,10 +307,17 @@
   top: 12vh;
   left: 50%;
   transform: translateX(-50%);
+  will-change: transform;
+
 
   .phone {
+    will-change: transform;
+
     .content{
+      will-change: transform;
+
       img {
+        will-change: transform;
         display: none;
       }
 
