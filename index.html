@@ -159,11 +159,19 @@
 
     <script type="module" src="./components/header/header.js"></script>
     <script type="module" src="./components/footer/footer.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 
-  <script >
+
+    <script >
 
     document.addEventListener('DOMContentLoaded', () => {
+      // Select elements that require animation
       const sections = document.querySelectorAll('.section');
+      const phoneContainers = document.querySelectorAll('.phone-container');
+      const animationTexts = document.querySelectorAll('.tell_text');
+      const qrPhones = document.querySelectorAll('.qr_phone');
+      const photo2Elements = document.querySelectorAll('.photo2');
+
       let currentSectionIndex = 0;
       let isScrolling = false;
       let touchStartY = 0;
@@ -171,15 +179,26 @@
       const scrollSensitivity = 1.5; // Higher value for more sensitive scrolling
       const scrollDuration = 700;    // Duration of smooth scroll animation
 
-      // Custom smooth scroll function
+      // Utility to apply transition styles to elements
+      const applyTransitions = (element) => {
+        element.style.transition = 'transform 1s, width 1s, top 1s';
+      };
+
+      // Utility to clear transitions with a delay to ensure smooth disabling
+      const clearTransitions = (element) => {
+        setTimeout(() => {
+          element.style.transition = '';
+        }, 1000);
+      };
+
+      const easeInOutQuad = (t) => {
+        return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+      };
+
       const smoothScroll = (targetPosition) => {
         const startPosition = window.pageYOffset;
         const distance = targetPosition - startPosition;
         let startTime = null;
-
-        const easeInOutQuad = (t) => {
-          return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
-        };
 
         const animation = (currentTime) => {
           if (startTime === null) startTime = currentTime;
@@ -197,17 +216,11 @@
         isScrolling = true;
 
         const targetPosition = sections[index].offsetTop;
-        console.log(`Moving to section ${index}, target position: ${targetPosition}px`);
 
         smoothScroll(targetPosition);
 
-        // Animate the phone movement with the scroll
-        const targetPhonePosition = index * 100; // Each section is 100vh tall
-        console.log(`Phone animation starts to translateY(${targetPhonePosition}vh)`);
-
         setTimeout(() => {
           isScrolling = false;
-          // Optionally, reset the transition property
         }, scrollDuration);
       };
 
@@ -228,7 +241,7 @@
       };
 
       const handleTouchMove = (event) => {
-        event.preventDefault(); // Prevent default scrolling
+        event.preventDefault();
       };
 
       const handleTouchEnd = (event) => {
@@ -242,7 +255,28 @@
         }
       };
 
-      window.addEventListener('wheel', handleScroll, { passive: false });
+      const throttle = (func, limit) => {
+        let lastFunc;
+        let lastRan;
+        return function () {
+          const context = this;
+          const args = arguments;
+          if (!lastRan) {
+            func.apply(context, args);
+            lastRan = Date.now();
+          } else {
+            clearTimeout(lastFunc);
+            lastFunc = setTimeout(function () {
+              if ((Date.now() - lastRan) >= limit) {
+                func.apply(context, args);
+                lastRan = Date.now();
+              }
+            }, limit - (Date.now() - lastRan));
+          }
+        };
+      };
+
+      window.addEventListener('wheel', throttle(handleScroll, 100), { passive: false });
       window.addEventListener('touchstart', handleTouchStart, { passive: true });
       window.addEventListener('touchmove', handleTouchMove, { passive: false });
       window.addEventListener('touchend', handleTouchEnd, { passive: true });
@@ -255,11 +289,60 @@
       };
 
       window.addEventListener('resize', resizeSections);
-      resizeSections(); // Initial setup
+      resizeSections();
 
-      // Scroll to the first section on load
       moveToSection(currentSectionIndex);
+
+      // Intersection Observer logic for animations
+      const handleIntersection = (entries, observer) => {
+        entries.forEach(entry => {
+          const element = entry.target;
+          applyTransitions(element);
+          if (entry.isIntersecting) {
+            element.classList.add('scrolled');
+          } else {
+            element.classList.remove('scrolled');
+            clearTransitions(element);
+          }
+        });
+      };
+
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      };
+
+      const observer = new IntersectionObserver(handleIntersection, observerOptions);
+
+      const observeElements = (elements) => {
+        elements.forEach(element => {
+          observer.observe(element);
+        });
+      };
+
+      const initializeAnimations = (elements) => {
+        elements.forEach(element => {
+          applyTransitions(element);
+          element.classList.add('scrolled');
+          setTimeout(() => {
+            element.classList.remove('scrolled');
+          }, 100);
+        });
+      };
+
+      const allElements = [...phoneContainers, ...animationTexts, ...qrPhones, ...photo2Elements];
+
+      initializeAnimations(allElements);
+      observeElements(phoneContainers);
+      observeElements(photo2Elements);
+      observeElements(animationTexts);
+      observeElements(qrPhones);
     });
+
+
+
+
 
     function setElementToFullScreen(element) {
       element.classList.add('auto-height-width');
