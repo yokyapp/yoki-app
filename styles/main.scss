@@ -308,6 +308,22 @@
   left: 50%;
   transform: translateX(-50%);
 
+  .phone {
+    .content{
+      img {
+        display: none;
+      }
+
+      .photo1 {
+        display: flex;
+      }
+
+      .photo2 {
+        display: block;
+      }
+    }
+  }
+
   .auto-height-width {
     width: auto;
     height: auto;
@@ -322,6 +338,14 @@
   &.scrolled {
     top: 2%;
     transform: translate(-50%, 100vh);
+
+    .phone {
+      .content{
+        .photo2 {
+          display: block;
+        }
+      }
+    }
   }
 
   &.scrolled2 {
@@ -333,6 +357,10 @@
       .content {
         border-radius: 6.5vw;
       }
+
+      .photo1 {
+        display: none;
+      }
     }
   }
 
@@ -343,6 +371,10 @@
     .phone {
       .content {
         border-radius: 5vw;
+
+        .photo3 {
+          display: block;
+        }
       }
     }
   }
@@ -350,6 +382,21 @@
   &.scrolled4 {
     transform: translate(-50%, 400vh);
     transition: 1s;
+
+    .phone {
+      .content {
+        border-radius: 5vw;
+
+        .photo3 {
+          display: block;
+        }
+
+
+        .photo4 {
+          display: block;
+        }
+      }
+    }
   }
 
   &.scrolled5 {
@@ -360,6 +407,18 @@
     .phone {
       .content {
         border-radius: 6.5vw;
+
+        .photo2 {
+          display: none;
+        }
+
+        .photo4 {
+          display: block;
+        }
+
+        .photo5 {
+          display: block;
+        }
       }
     }
   }
@@ -371,6 +430,14 @@
     .phone {
       .content {
         border-radius: 5vw;
+
+        .photo5 {
+          display: block;
+        }
+
+        .photo6 {
+          display: block;
+        }
       }
     }
   }
@@ -382,6 +449,19 @@
     .phone {
       .content {
         border-radius: 5vw;
+
+
+        .photo4 {
+          display: none;
+        }
+
+        .photo6 {
+          display: block;
+        }
+
+        .photo7 {
+          display: block;
+        }
       }
     }
   }
@@ -394,6 +474,11 @@
     .phone {
       .content {
         border-radius: 6.5vw;
+
+
+        .photo7 {
+          display: block;
+        }
       }
     }
   }
