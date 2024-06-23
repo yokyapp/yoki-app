@@ -3,6 +3,7 @@ class SectionScroller {
         this.sections = document.querySelectorAll('.section');
         this.phone = document.querySelector('.phone-container');
         this.phoneOverflow = document.querySelector('#phoneOverflow');
+        this.secondaryPhone = document.querySelector('.secondary-phone');
         this.currentSectionIndex = 0;
         this.isScrolling = false;
         this.touchStartY = 0;
@@ -10,6 +11,7 @@ class SectionScroller {
         this.scrollDuration = options.scrollDuration || 700;
         this.phoneStyles = options.phoneStyles || [];
         this.imageMappings = options.imageMappings || [];
+        this.secondaryPhoneSection = options.secondaryPhoneSection || null;
 
         this.init();
     }
@@ -56,6 +58,7 @@ class SectionScroller {
         this.smoothScroll(targetPosition);
         this.animatePhone(index);
         this.updatePhoneImage(index);
+        this.updateSecondaryPhone(index);
 
         setTimeout(() => {
             this.isScrolling = false;
@@ -79,6 +82,14 @@ class SectionScroller {
                 img.classList.remove('active');
             }
         });
+    }
+
+    updateSecondaryPhone(index) {
+        if (this.secondaryPhoneSection !== null && index === this.secondaryPhoneSection) {
+            this.secondaryPhone.classList.add('active');
+        } else {
+            this.secondaryPhone.classList.remove('active');
+        }
     }
 
     handleScroll(event) {
@@ -148,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
             { x: -30, y: 2.5, width: normanlWidthHeight, od: "px", br: 5 }, // badge
             { x: -30, y: 2.5, width: normanlWidthHeight, od: "px", br: 5 }, // now let find
             { x: -16, y: 2.5, width: 55, od: "vw", br: 6.5 }, // find your ideal
-            { x: -30, y: 2.5, width: normanlWidthHeight, od: "px", br: 6.5 }, // explore
+            { x: -30, y: 2.5, width: normanlWidthHeight, od: "px", br: 5 }, // explore
             { x: -30, y: 2.5, width: normanlWidthHeight, od: "px" }, // found
             { x: -16, y: -68, width: 55, od: "vw",  br: 6.5 }, // now sent
             { x: -30, y: 2.5, width: normanlWidthHeight, od: "px" }, // tell about yourself
@@ -166,7 +177,8 @@ document.addEventListener('DOMContentLoaded', () => {
             5, // chose
             5, // Show photo3 in section 2
             6, // Show photo3 in section 2
-        ]
+        ],
+        secondaryPhoneSection: 3
     });
 
     console.log('Current section index:', scroller.getCurrentSectionIndex());

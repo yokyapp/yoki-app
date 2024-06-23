@@ -308,10 +308,10 @@ section {
   top: 0;
   left: 50%;
   transform: translate(-50%, 4%);
-  transition: transform 0.7s ease-in-out, width 0.7s ease-in-out, height 0.7s ease-in-out;
+  transition: transform 1s ease-in-out, width 1s ease-in-out, height 1s ease-in-out;
 
   .phone {
-    transition: transform 0.7s ease-in-out;
+    transition: transform 1s ease-in-out;
 
     .content {
       position: absolute;
@@ -359,58 +359,62 @@ section {
       opacity: 1;
     }
   }
-}
 
-.qr_phone {
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, 300vh);
-  z-index: 2000;
-  top: 2%;
+  .secondary-phone {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    height: 95vh;
+    transform: translate(0%, 0%);
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
 
-  transition: 1s !important;
-
-  .phone {
-    z-index: -1;
-    transition: 1s !important;
+    &.active {
+      top: 0;
+      left: 0;
+      opacity: 1;
+      transition-delay: 1s;
+      transform: translateX(50%);
+    }
 
     .content {
-      position: absolute;
-      top: 0;
-      height: 100%;
-      width: 99%;
-      border: 2px solid pink;
-      border-radius: 4.4vw;
+      height: 95vh;
       overflow: hidden;
-      background: pink;
-      z-index: -1;
+      border-radius: 5vw;
+    }
 
-      img {
+    .phone {
+      z-index: -1;
+      transition: 1s !important;
+
+      .content {
         position: absolute;
-        left: 50%;
-        transform: translate(-50%, 0%);
-        width: 100%;
-        z-index: 1;
-        transform-origin: left;
-        scale: 0.94;
-        transition: transform 1s;
+        top: 0;
+        height: 100%;
+        width: 99%;
+        border: 2px solid pink;
+        border-radius: 4.4vw;
+        overflow: hidden;
+        background: pink;
+        z-index: -1;
+
+        img {
+          position: absolute;
+          left: 50%;
+          transform: translate(-50%, 0%);
+          width: 100%;
+          z-index: 1;
+          transform-origin: left;
+          scale: 0.94;
+          transition: transform 1s;
+        }
       }
     }
 
-    > img {
-      height: 95vh;
+    #obgortka {
+      position: absolute;
+      top: 0;
     }
-  }
-  opacity: 0;
-
-  &:hover {
-    transition: 1s;
-    transition-delay: 0s !important;
-    transform: translate(20vw, 300vh) !important;
-  }
-
-  &.scrolled {
-    opacity: 1;
-    transform: translate(0vw, 300vh);
   }
 }
