@@ -12,10 +12,10 @@
   flex-direction: column;
   overflow-y: scroll;
 }
-//
-//section {
-//  border: 1px solid black;
-//}
+
+section {
+  border: 1px solid black;
+}
 
 
 
@@ -271,6 +271,7 @@
   flex-direction: column;
   justify-content: flex-end;
   gap: 10vh;
+  overflow: hidden;
 
   .fp-tableCell {
     display: flex;
@@ -300,161 +301,45 @@
 }
 
 .phone-container {
-  position: absolute;
+  position: fixed;
   z-index: 99999;
   width: 41vw;
   height: auto;
-  top: 12vh;
+  top: 0;
   left: 50%;
-  transform: translateX(-50%);
-  will-change: transform;
-
-
-  .phone {
-    will-change: transform;
-
-    .content{
-      will-change: transform;
-
-      img {
-        will-change: transform;
-        display: none;
-      }
-
-      .photo1 {
-        display: flex;
-      }
-
-      .photo2 {
-        display: block;
-      }
-    }
-  }
-
-  .auto-height-width {
-    width: auto;
-    height: auto;
-    transition: transform 1s, width 1s, top 1s;
-  }
-
-  .full-screen-height {
-    height: 95vh;
-    transition: transform 1s, width 1s, top 1s;
-  }
-
-  &.scrolled {
-    top: 2%;
-    transform: translate(-50%, 100vh);
-
-    .phone {
-      .content{
-        .photo2 {
-          display: block;
-        }
-      }
-    }
-  }
-
-  &.scrolled2 {
-    transform: translate(-8vw, 200vh);
-    transition: 1s;
-    width: 55vw;
-
-    .phone {
-      .content {
-        border-radius: 6.5vw;
-      }
-
-      .photo1 {
-        display: none;
-      }
-    }
-  }
-
-  &.scrolled3 {
-    transform: translate(-50%, 300vh);
-    transition: 1s;
-
-    .phone {
-      .content {
-        border-radius: 5vw;
-      }
-    }
-  }
-
-  &.scrolled4 {
-    transform: translate(-50%, 400vh);
-    transition: 1s;
-  }
-
-  &.scrolled5 {
-    transform: translate(-8vw, 500vh);
-    transition: 1s;
-    width: 55vw;
-
-    .phone {
-      .content {
-        border-radius: 6.5vw;
-      }
-    }
-  }
-
-  &.scrolled6 {
-    transform: translate(-50%, 600vh);
-    transition: 1s;
-
-    .phone {
-      .content {
-        border-radius: 5vw;
-      }
-    }
-  }
-
-  &.scrolled7 {
-    transform: translate(-50%, 700vh);
-    transition: 1s;
-
-    .phone {
-      .content {
-        border-radius: 5vw;
-      }
-    }
-  }
-
-  &.scrolled8 {
-    transform: translate(-8vw, 675vh);
-    transition: 1s;
-    width: 55vw;
-
-    .phone {
-      .content {
-        border-radius: 6.5vw;
-      }
-    }
-  }
-
-  &.scrolled9 {
-    transform: translate(-50%, 900vh);
-    transition: 1s;
-
-    .phone {
-      .content {
-        border-radius: 5vw;
-      }
-    }
-  }
+  transform: translate(-50%, 4%);
+  transition: transform 0.7s ease-in-out, width 0.7s ease-in-out, height 0.7s ease-in-out;
 
   .phone {
+    transition: transform 0.7s ease-in-out;
+
     .content {
       position: absolute;
       top: 0;
       height: 100%;
       width: 98%;
       left: 3px;
-      border: 2px solid black;
+      //border: 2px solid black;
       border-radius: 5vw;
       overflow: hidden;
-      background: pink;
+      background: #fff;
+
+      .photo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transform: translateY(100%);
+        transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+
+        &.active {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
 
       img {
         position: absolute;
@@ -464,71 +349,6 @@
         z-index: 1;
         transform-origin: left;
         scale: 0.98;
-      }
-
-      .photo1 {
-        transform: translate(-50%, -0.04%);
-      }
-
-      .photo2 {
-        transform: translate(-50%, 100%);
-
-        &.scrolled {
-          transform: translate(-50%, -0.45%);
-          transition: 1s;
-
-          scale: 0.96;
-        }
-      }
-
-      .photo3 {
-        transform: translate(-50%, 100%);
-        scale: 0.93;
-
-        &.scrolled {
-          transform: translate(-50%, -1.5%);
-          transition: 1s;
-        }
-      }
-
-      .photo4 {
-        transform: translate(-50%, 100%);
-        scale: 0.93;
-
-        &.scrolled {
-          transform: translate(-50%, -1.5%);
-          transition: 1s;
-        }
-      }
-
-      .photo5 {
-        transform: translate(-50%, 100%);
-        scale: 0.93;
-
-        &.scrolled {
-          transform: translate(-50%, -1.5%);
-          transition: 1s;
-        }
-      }
-
-      .photo6 {
-        transform: translate(-50%, 100%);
-        scale: 0.93;
-
-        &.scrolled {
-          transform: translate(-50%, -1.5%);
-          transition: 1s;
-        }
-      }
-
-      .photo7 {
-        transform: translate(-50%, 100%);
-        scale: 0.93;
-
-        &.scrolled {
-          transform: translate(-50%, -1.5%);
-          transition: 1s;
-        }
       }
     }
 
@@ -574,10 +394,6 @@
         transform-origin: left;
         scale: 0.94;
         transition: transform 1s;
-      }
-
-      .photo2 {
-        transform: translate(-50%, -1.04%);
       }
     }
 

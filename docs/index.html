@@ -7,20 +7,20 @@
     <title>Vite App</title>
     <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&display=swap" rel="stylesheet">
 
-    <script type="module" crossorigin src="/yoki-landing/assets/index-DStc_4zU.js"></script>
-    <link rel="stylesheet" crossorigin href="/yoki-landing/assets/index-DTD0ysNh.css">
+    <script type="module" crossorigin src="/yoki-landing/assets/index-B06J8cY2.js"></script>
+    <link rel="stylesheet" crossorigin href="/yoki-landing/assets/index-B3NgPSUs.css">
   </head>
   <body>
     <div class="phone-container">
       <div class="phone">
-        <div class="content">
+        <div id="phoneOverflow" class="content">
           <img src="/yoki-landing/phone_screens/photo_scenes/webp_format/zero.webp" class="photo photo1" loading="lazy" alt="">
           <img src="/yoki-landing/phone_screens/photo_scenes/webp_format/Group3.webp" class="photo photo2" loading="lazy" alt="">
-<!--          <img src="/phone_screens/photo_scenes/webp_format/second_screen.webp" class="photo photo3" loading="lazy" alt="">-->
-<!--          <img src="/phone_screens/photo_scenes/webp_format/search_screen.webp" class="photo photo4" loading="lazy" alt="">-->
-<!--          <img src="/phone_screens/photo_scenes/webp_format/main_screen.webp" class="photo photo5" loading="lazy" alt="">-->
-<!--          <img src="/phone_screens/photo_scenes/webp_format/mine_screen.webp" class="photo photo6" loading="lazy" alt="">-->
-<!--          <img src="/phone_screens/photo_scenes/webp_format/profile_screen.webp" class="photo photo7" loading="lazy" alt="">-->
+          <img src="/yoki-landing/phone_screens/photo_scenes/webp_format/second_screen.webp" class="photo photo3" loading="lazy" alt="">
+          <img src="/yoki-landing/phone_screens/photo_scenes/webp_format/search_screen.webp" class="photo photo4" loading="lazy" alt="">
+          <img src="/yoki-landing/phone_screens/photo_scenes/webp_format/main_screen.webp" class="photo photo5" loading="lazy" alt="">
+          <img src="/yoki-landing/phone_screens/photo_scenes/webp_format/mine_screen.webp" class="photo photo6" loading="lazy" alt="">
+          <img src="/yoki-landing/phone_screens/photo_scenes/webp_format/profile_screen.webp" class="photo photo7" loading="lazy" alt="">
         </div>
         <img id="phone_container" src="/yoki-landing/phone_screens/photo_scenes/pixel8.png" alt="">
       </div>
@@ -152,226 +152,6 @@
       </footer>
     </section>
 
-
-
-  <script >
-
-    document.addEventListener('DOMContentLoaded', () => {
-      const sections = document.querySelectorAll('.section');
-      let currentSectionIndex = 0;
-      let isScrolling = false;
-      let touchStartY = 0;
-
-      const scrollSensitivity = 1.5; // Higher value for more sensitive scrolling
-      const scrollDuration = 700;    // Duration of smooth scroll animation
-
-      // Custom smooth scroll function
-      const smoothScroll = (targetPosition) => {
-        const startPosition = window.pageYOffset;
-        const distance = targetPosition - startPosition;
-        let startTime = null;
-
-        const easeInOutQuad = (t) => {
-          return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
-        };
-
-        const animation = (currentTime) => {
-          if (startTime === null) startTime = currentTime;
-          const timeElapsed = currentTime - startTime;
-          const run = easeInOutQuad(timeElapsed / scrollDuration) * distance + startPosition;
-          window.scrollTo(0, run);
-          if (timeElapsed < scrollDuration) requestAnimationFrame(animation);
-        };
-
-        requestAnimationFrame(animation);
-      };
-
-      const moveToSection = (index) => {
-        if (isScrolling) return;
-        isScrolling = true;
-
-        const targetPosition = sections[index].offsetTop;
-        console.log(`Moving to section ${index}, target position: ${targetPosition}px`);
-
-        smoothScroll(targetPosition);
-
-        // Animate the phone movement with the scroll
-        const targetPhonePosition = index * 100; // Each section is 100vh tall
-        console.log(`Phone animation starts to translateY(${targetPhonePosition}vh)`);
-
-        setTimeout(() => {
-          isScrolling = false;
-          // Optionally, reset the transition property
-        }, scrollDuration);
-      };
-
-      const handleScroll = (event) => {
-        event.preventDefault();
-
-        if (isScrolling) return;
-
-        const direction = event.deltaY > 0 ? 1 : -1;
-        if ((direction > 0 && currentSectionIndex < sections.length - 1) || (direction < 0 && currentSectionIndex > 0)) {
-          currentSectionIndex += direction;
-          moveToSection(currentSectionIndex);
-        }
-      };
-
-      const handleTouchStart = (event) => {
-        touchStartY = event.touches[0].clientY;
-      };
-
-      const handleTouchMove = (event) => {
-        event.preventDefault(); // Prevent default scrolling
-      };
-
-      const handleTouchEnd = (event) => {
-        const touchEndY = event.changedTouches[0].clientY;
-        const direction = touchStartY - touchEndY > 0 ? 1 : -1;
-        if (isScrolling) return;
-
-        if ((direction > 0 && currentSectionIndex < sections.length - 1) || (direction < 0 && currentSectionIndex > 0)) {
-          currentSectionIndex += direction;
-          moveToSection(currentSectionIndex);
-        }
-      };
-
-      window.addEventListener('wheel', handleScroll, { passive: false });
-      window.addEventListener('touchstart', handleTouchStart, { passive: true });
-      window.addEventListener('touchmove', handleTouchMove, { passive: false });
-      window.addEventListener('touchend', handleTouchEnd, { passive: true });
-
-      const resizeSections = () => {
-        const viewportHeight = window.innerHeight;
-        sections.forEach(section => {
-          section.style.height = `${viewportHeight}px`;
-        });
-      };
-
-      window.addEventListener('resize', resizeSections);
-      resizeSections(); // Initial setup
-
-      // Scroll to the first section on load
-      moveToSection(currentSectionIndex);
-    });
-
-    function setElementToFullScreen(element) {
-      element.classList.add('auto-height-width');
-      const screenHeight = window.innerHeight;
-      const elementHeight = element.offsetHeight;
-      const widthToHeightRatio = element.offsetWidth / elementHeight;
-      const desiredWidth = screenHeight * widthToHeightRatio;
-      element.style.width = `${desiredWidth - desiredWidth * 0.05}px`;
-      element.classList.add('full-screen-height');
-    }
-
-    window.addEventListener('scroll', () => {
-      const animationElements = document.querySelectorAll('.phone-container');
-      const animationsText = document.querySelectorAll('.tell_text');
-      const qr_phone = document.querySelectorAll('.qr_phone');
-      const photo2 = document.querySelectorAll('.photo2');
-      const photo3 = document.querySelectorAll('.photo3');
-      const photo4 = document.querySelectorAll('.photo4');
-      const photo5 = document.querySelectorAll('.photo5');
-      const photo6 = document.querySelectorAll('.photo6');
-      const photo7 = document.querySelectorAll('.photo7');
-
-      let dist = window.innerHeight * 0.1
-
-      const triggerDistance = window.innerHeight - dist;
-      const triggerDistance2 = window.innerHeight * 2 - dist;
-      const triggerDistance3 = window.innerHeight * 3 - dist;
-      const triggerDistance4 = window.innerHeight * 4 - dist;
-      const triggerDistance5 = window.innerHeight * 5 - dist;
-      const triggerDistance6 = window.innerHeight * 6 - dist;
-      const triggerDistance7 = window.innerHeight * 7 - dist;
-      const triggerDistance8 = window.innerHeight * 8 - dist;
-      const triggerDistance9 = window.innerHeight * 9 - dist;
-
-      function addTransition(element) {
-        element.style.transition = 'transform 1s, width 1s, top 1s';
-      }
-
-      function removeTransition(element) {
-        setTimeout(() => {
-          element.style.transition = '';
-        }, 1000);
-      }
-
-      function manageScrollAnimations(elements, scrollY, triggerDistances) {
-        elements.forEach(element => {
-          triggerDistances.forEach((distance, index) => {
-            const className = `scrolled${index ? index + 1 : ''}`;
-            const isScrolledPast = scrollY > distance;
-            const isAnimationElement = Array.from(animationElements).includes(element);
-            const isTriggerDistance = distance === triggerDistance;
-            const isTriggerDistance2 = distance === triggerDistance2;
-            const isTriggerDistance3 = distance === triggerDistance3;
-            const isTriggerDistance4 = distance === triggerDistance4;
-            const isTriggerDistance5 = distance === triggerDistance5;
-            const isTriggerDistance6 = distance === triggerDistance6;
-            const isTriggerDistance7 = distance === triggerDistance7;
-            const isTriggerDistance8 = distance === triggerDistance8;
-            const isTriggerDistance9 = distance === triggerDistance9;
-
-            if (isScrolledPast) {
-              if (!element.classList.contains(className)) {
-                addTransition(element);
-                element.classList.add(className);
-
-                if (isAnimationElement) {
-                  if (isTriggerDistance || isTriggerDistance4 || isTriggerDistance3
-                          || isTriggerDistance6 || isTriggerDistance9) {
-                    setElementToFullScreen(element);
-                  } else if (isTriggerDistance2 || isTriggerDistance5 || isTriggerDistance4
-                          || isTriggerDistance8) {
-                    resetElementSize(element);
-                  }
-                }
-              }
-            } else {
-              if (element.classList.contains(className)) {
-                addTransition(element);
-                element.classList.remove(className);
-                removeTransition(element);
-
-                if (isAnimationElement) {
-                  if (isTriggerDistance2 || isTriggerDistance5 || isTriggerDistance4
-                          || isTriggerDistance7 || isTriggerDistance8) {
-                    setElementToFullScreen(element);
-                  } else if (isTriggerDistance || isTriggerDistance3 || isTriggerDistance4 || isTriggerDistance5
-                          || isTriggerDistance6 || isTriggerDistance9) {
-                    resetElementSize(element);
-                  }
-                }
-              }
-            }
-          });
-        });
-      }
-
-      function resetElementSize(element) {
-        element.classList.remove('auto-height-width');
-        element.classList.remove('full-screen-height');
-        element.style.width = '';
-      }
-
-      const scrollY = window.scrollY;
-      const triggerDistances = [
-        triggerDistance, triggerDistance2, triggerDistance3, triggerDistance4,
-        triggerDistance5, triggerDistance6, triggerDistance7, triggerDistance8,
-        triggerDistance9
-      ];
-      manageScrollAnimations(animationElements, scrollY, triggerDistances);
-      manageScrollAnimations(photo2, scrollY, [triggerDistance]);
-      manageScrollAnimations(photo3, scrollY, [triggerDistance4]);
-      manageScrollAnimations(photo4, scrollY, [triggerDistance5]);
-      manageScrollAnimations(photo5, scrollY, [triggerDistance6]);
-      manageScrollAnimations(photo6, scrollY, [triggerDistance7]);
-      manageScrollAnimations(photo7, scrollY, [triggerDistance9]);
-      manageScrollAnimations(animationsText, scrollY, [triggerDistance2]);
-      manageScrollAnimations(qr_phone, scrollY, [triggerDistance3]);
-    });
-  </script>
+
   </body>
 </html>

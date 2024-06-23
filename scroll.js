@@ -1,12 +1,34 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const sections = document.querySelectorAll('.section');
-    let currentSectionIndex = 0;
-    let isScrolling = false;
+class SectionScroller {
+    constructor(options = {}) {
+        this.sections = document.querySelectorAll('.section');
+        this.phone = document.querySelector('.phone-container');
+        this.phoneOverflow = document.querySelector('#phoneOverflow');
+        this.currentSectionIndex = 0;
+        this.isScrolling = false;
+        this.touchStartY = 0;
+        this.scrollSensitivity = options.scrollSensitivity || 1.5;
+        this.scrollDuration = options.scrollDuration || 700;
+        this.phoneStyles = options.phoneStyles || [];
+        this.imageMappings = options.imageMappings || [];
 
-    const scrollSensitivity = 1.5;
-    const scrollDuration = 700;
+        this.init();
+    }
 
-    const smoothScroll = (targetPosition) => {
+    init() {
+        this.addEventListeners();
+        this.resizeSections();
+        this.moveToSection(this.currentSectionIndex);
+    }
+
+    addEventListeners() {
+        window.addEventListener('wheel', this.handleScroll.bind(this), { passive: false });
+        window.addEventListener('touchstart', this.handleTouchStart.bind(this), { passive: true });
+        window.addEventListener('touchmove', this.handleTouchMove.bind(this), { passive: false });
+        window.addEventListener('touchend', this.handleTouchEnd.bind(this), { passive: true });
+        window.addEventListener('resize', this.resizeSections.bind(this));
+    }
+
+    smoothScroll(targetPosition) {
         const startPosition = window.pageYOffset;
         const distance = targetPosition - startPosition;
         let startTime = null;
@@ -18,54 +40,135 @@ document.addEventListener('DOMContentLoaded', () => {
         const animation = (currentTime) => {
             if (startTime === null) startTime = currentTime;
             const timeElapsed = currentTime - startTime;
-            const run = easeInOutQuad(timeElapsed / scrollDuration) * distance + startPosition;
+            const run = easeInOutQuad(timeElapsed / this.scrollDuration) * distance + startPosition;
             window.scrollTo(0, run);
-            if (timeElapsed < scrollDuration) requestAnimationFrame(animation);
+            if (timeElapsed < this.scrollDuration) requestAnimationFrame(animation);
         };
 
         requestAnimationFrame(animation);
-    };
+    }
 
-    const moveToSection = (index) => {
-        if (isScrolling) return;
-        isScrolling = true;
+    moveToSection(index) {
+        if (this.isScrolling) return;
+        this.isScrolling = true;
 
-        const targetPosition = sections[index].offsetTop;
-        console.log(`Moving to section ${index}, target position: ${targetPosition}px`);
-
-        smoothScroll(targetPosition);
-
-        const targetPhonePosition = index * 100;
-        console.log(`Phone animation starts to translateY(${targetPhonePosition}vh)`);
+        const targetPosition = this.sections[index].offsetTop;
+        this.smoothScroll(targetPosition);
+        this.animatePhone(index);
+        this.updatePhoneImage(index);
 
         setTimeout(() => {
-            isScrolling = false;
-        }, scrollDuration);
-    };
+            this.isScrolling = false;
+        }, this.scrollDuration);
+    }
 
-    const handleScroll = (event) => {
+    animatePhone(index) {
+        const style = this.phoneStyles[index] || { x: 0, y: 0, width: 100, od: 'vw' };
+        this.phone.style.transform = `translate(${style.x}%, ${style.y}%)`;
+        this.phone.style.width = `${style.width}${style.od}`;
+        this.phoneOverflow.style.borderRadius = `${style.br}vw`;
+        console.log(`Phone animation to position X: ${style.x}%, Y: ${style.y}%, Width: ${style.width}${style.od}`);
+    }
+
+    updatePhoneImage(index) {
+        const images = document.querySelectorAll('.phone .photo');
+        images.forEach((img, i) => {
+            if (this.imageMappings[index] === i) {
+                img.classList.add('active');
+            } else {
+                img.classList.remove('active');
+            }
+        });
+    }
+
+    handleScroll(event) {
         event.preventDefault();
 
-        if (isScrolling) return;
+        if (this.isScrolling) return;
 
         const direction = event.deltaY > 0 ? 1 : -1;
-        if ((direction > 0 && currentSectionIndex < sections.length - 1) || (direction < 0 && currentSectionIndex > 0)) {
-            currentSectionIndex += direction;
-            moveToSection(currentSectionIndex);
+        if ((direction > 0 && this.currentSectionIndex < this.sections.length - 1) || (direction < 0 && this.currentSectionIndex > 0)) {
+            this.currentSectionIndex += direction;
+            this.moveToSection(this.currentSectionIndex);
         }
-    };
+    }
 
-    window.addEventListener('wheel', handleScroll, { passive: false });
+    handleTouchStart(event) {
+        this.touchStartY = event.touches[0].clientY;
+    }
 
-    const resizeSections = () => {
+    handleTouchMove(event) {
+        event.preventDefault(); // Prevent default scrolling
+    }
+
+    handleTouchEnd(event) {
+        const touchEndY = event.changedTouches[0].clientY;
+        const direction = this.touchStartY - touchEndY > 0 ? 1 : -1;
+        if (this.isScrolling) return;
+
+        if ((direction > 0 && this.currentSectionIndex < this.sections.length - 1) || (direction < 0 && this.currentSectionIndex > 0)) {
+            this.currentSectionIndex += direction;
+            this.moveToSection(this.currentSectionIndex);
+        }
+    }
+
+    resizeSections() {
         const viewportHeight = window.innerHeight;
-        sections.forEach(section => {
+        this.sections.forEach(section => {
             section.style.height = `${viewportHeight}px`;
         });
-    };
+    }
 
-    window.addEventListener('resize', resizeSections);
-    resizeSections();
+    getCurrentSectionIndex() {
+        return this.currentSectionIndex;
+    }
 
-    moveToSection(currentSectionIndex);
+    getCurrentSectionElement() {
+        return this.sections[this.currentSectionIndex];
+    }
+
+    calculateWidthHeight() {
+        return window.innerHeight * (this.phone.offsetWidth / this.phone.offsetHeight);
+    }
+}
+
+// Usage
+document.addEventListener('DOMContentLoaded', () => {
+    const phoneContainer = document.querySelector('.phone-container');
+    const widthHeight = window.innerHeight * (phoneContainer.offsetWidth / phoneContainer.offsetHeight);
+    const normanlWidthHeight =  widthHeight - widthHeight * 0.05
+
+    const scroller = new SectionScroller({
+        scrollSensitivity: 1.5,
+        scrollDuration: 700,
+        phoneStyles: [
+            { x: -50, y: 4, width: 41, od: "vw" }, // main
+            { x: -30, y: 2.5, width: normanlWidthHeight, od: "px", br: 5 }, // tell
+            { x: -16, y: -12, width: 55, od: "vw" }, // tell 2
+            { x: -30, y: 2.5, width: normanlWidthHeight, od: "px", br: 5 }, // badge
+            { x: -30, y: 2.5, width: normanlWidthHeight, od: "px", br: 5 }, // now let find
+            { x: -16, y: 2.5, width: 55, od: "vw", br: 6.5 }, // find your ideal
+            { x: -30, y: 2.5, width: normanlWidthHeight, od: "px", br: 6.5 }, // explore
+            { x: -30, y: 2.5, width: normanlWidthHeight, od: "px" }, // found
+            { x: -16, y: -68, width: 55, od: "vw",  br: 6.5 }, // now sent
+            { x: -30, y: 2.5, width: normanlWidthHeight, od: "px" }, // tell about yourself
+            { x: 250, y: 2.5, width: normanlWidthHeight, od: "px" },
+            { x: 250, y: 2.5, width: normanlWidthHeight, od: "px" },
+        ],
+        imageMappings: [
+            0, // main
+            1, // Show photo2 in section 1
+            1,  // Show photo3 in section 2
+            1,  // Show photo3 in section 2
+            2, // find what
+            3, // find ideal
+            4, // explore
+            5, // chose
+            5, // Show photo3 in section 2
+            6, // Show photo3 in section 2
+        ]
+    });
+
+    console.log('Current section index:', scroller.getCurrentSectionIndex());
+    console.log('Current section element:', scroller.getCurrentSectionElement());
 });
