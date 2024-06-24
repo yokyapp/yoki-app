@@ -93,12 +93,16 @@ section {
     justify-content: center;
     width: 50%;
 
-    .tell_text {
-    }
+    &.tell_text {
+      position: absolute;
+      left: 4%;
+      transform: translate(0%, 30%);
+      transition: 1s;
 
-    &.scrolled {
-      transition: 0.7s !important;
-      transform: translateY(100vh);
+      &.active {
+        transition: 1s;
+        transform: translate(0%, 124vh);
+      }
     }
 
     h2 {
@@ -316,7 +320,7 @@ section {
       top: 0;
       height: 100%;
       width: 98%;
-      left: 3px;
+      left: 0px;
       //border: 2px solid black;
       border-radius: 5vw;
       overflow: hidden;
@@ -338,6 +342,34 @@ section {
         }
       }
 
+      .photo2 {
+        scale: 0.96;
+        left: 3px;
+      }
+
+      .photo3 {
+        scale: 0.959;
+        left: 3px;
+      }
+
+      .photo4 {
+        scale: 0.96;
+      }
+
+      .photo5 {
+        top: -5px;
+        scale: 0.959;
+      }
+
+      .photo6 {
+        top: -5px;
+        scale: 0.939;
+      }
+
+      .photo7 {
+        scale: 0.949;
+        left: 2px;
+      }
 
       img {
         position: absolute;
@@ -345,7 +377,6 @@ section {
         transform: translate(-50%, 0%);
         width: 100%;
         z-index: 1;
-        transform-origin: left;
         scale: 0.98;
       }
     }

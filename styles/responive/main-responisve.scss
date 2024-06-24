@@ -78,13 +78,17 @@
       backdrop-filter: blur(1.5px);
       gap: 32px;
 
-      .tell_text {
-        width: 100%;
-      }
 
-      &.scrolled {
-        transition: 0.7s !important;
-        transform: translate(18%, 80vh);
+      &.tell_text {
+        position: absolute;
+        transform: translate(0%, 10%);
+        transition: 1s;
+
+        &.active {
+          left: -15%;
+          transition: 1s;
+          transform: translate(50%, 75vh);
+        }
       }
 
       h2 {
