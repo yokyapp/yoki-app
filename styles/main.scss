@@ -26,7 +26,7 @@ section {
   .head-screen {
     display: flex;
     justify-content: space-between;
-    padding: 0px 74px 0px 55px;
+    padding: 0px 55px 0px 55px;
 
     .text-content {
       &:first-child {
@@ -44,10 +44,9 @@ section {
         gap: 10px;
         height: fit-content;
         margin: calc((100vh - 131px) / 2 - 262px) 0 auto 0;
-        width: 25%;
 
         h1 {
-          font-size: 7.813rem;
+          //font-size: 7.813rem;
           font-size: 6.5vw;
         }
 
@@ -55,7 +54,6 @@ section {
           display: flex;
           flex-direction: column;
           gap: 25px;
-          width: 70%;
 
           p:first-child {
             //font-size: 2.438rem;

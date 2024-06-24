@@ -10,6 +10,7 @@ class SectionScroller {
         this.scrollSensitivity = options.scrollSensitivity || 1.5;
         this.scrollDuration = options.scrollDuration || 700;
         this.phoneStyles = options.phoneStyles || [];
+        this.mobilePhoneStyles = options.mobilePhoneStyles || [];
         this.imageMappings = options.imageMappings || [];
         this.secondaryPhoneSection = options.secondaryPhoneSection || null;
 
@@ -19,6 +20,7 @@ class SectionScroller {
     init() {
         this.addEventListeners();
         this.resizeSections();
+        this.checkViewport();
         this.moveToSection(this.currentSectionIndex);
     }
 
@@ -28,6 +30,7 @@ class SectionScroller {
         window.addEventListener('touchmove', this.handleTouchMove.bind(this), { passive: false });
         window.addEventListener('touchend', this.handleTouchEnd.bind(this), { passive: true });
         window.addEventListener('resize', this.resizeSections.bind(this));
+        window.addEventListener('resize', this.checkViewport.bind(this));
     }
 
     smoothScroll(targetPosition) {
@@ -66,11 +69,19 @@ class SectionScroller {
     }
 
     animatePhone(index) {
-        const style = this.phoneStyles[index] || { x: 0, y: 0, width: 100, od: 'vw' };
+        const style = this.currentPhoneStyles[index] || { x: 0, y: 0, width: 100, od: 'vw' };
         this.phone.style.transform = `translate(${style.x}%, ${style.y}%)`;
         this.phone.style.width = `${style.width}${style.od}`;
         this.phoneOverflow.style.borderRadius = `${style.br}vw`;
         console.log(`Phone animation to position X: ${style.x}%, Y: ${style.y}%, Width: ${style.width}${style.od}`);
+    }
+
+    checkViewport() {
+        if (window.innerWidth <= 768) {
+            this.currentPhoneStyles = this.mobilePhoneStyles;
+        } else {
+            this.currentPhoneStyles = this.phoneStyles;
+        }
     }
 
     updatePhoneImage(index) {
@@ -153,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
         scrollSensitivity: 1.5,
         scrollDuration: 700,
         phoneStyles: [
-            { x: -50, y: 4, width: 41, od: "vw" }, // main
+            { x: -42, y: 4, width: 41, od: "vw" }, // main
             { x: -30, y: 2.5, width: normanlWidthHeight, od: "px", br: 5 }, // tell
             { x: -16, y: -12, width: 55, od: "vw" }, // tell 2
             { x: -30, y: 2.5, width: normanlWidthHeight, od: "px", br: 5 }, // badge
@@ -165,6 +176,20 @@ document.addEventListener('DOMContentLoaded', () => {
             { x: -30, y: 2.5, width: normanlWidthHeight, od: "px" }, // tell about yourself
             { x: 250, y: 2.5, width: normanlWidthHeight, od: "px" },
             { x: 250, y: 2.5, width: normanlWidthHeight, od: "px" },
+        ],
+        mobilePhoneStyles: [
+            { x: -50, y: 55, width: 90, od: "vw" }, // main
+            { x: -20, y: 2.5, width: normanlWidthHeight, od: "px", br: 5 }, // tell
+            { x: -50, y: 45, width: 90, od: "vw" }, // tell 2
+            { x: -75, y: 35, width: normanlWidthHeight - normanlWidthHeight * 0.3, od: "px", br: 5 }, // badge
+            { x: -50, y: 20, width: 90, od: "vw", br: 5 }, // now let find
+            { x: -50, y: 42, width: 90, od: "vw", br: 6.5 }, // find your ideal
+            { x: -50, y: 20, width: 90, od: "vw", br: 5 }, // explore
+            { x: -50, y: 25, width: 90, od: "vw" }, // found
+            { x: -50, y: -55, width: 90, od: "vw",  br: 6.5 }, // now sent
+            { x: -20, y: 2.5, width: normanlWidthHeight, od: "px", }, // tell about yourself
+            { x: -20, y: 2.5, width: 90, od: "vw" },
+            { x: -20, y: 2.5, width: 90, od: "vw" },
         ],
         imageMappings: [
             0, // main
