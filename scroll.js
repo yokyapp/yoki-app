@@ -72,10 +72,10 @@ class SectionScroller {
     }
 
     animatePhone(index) {
-        const style = this.currentPhoneStyles[index] || { x: 0, y: 0, width: 100, od: 'vw' };
+        const style = this.currentPhoneStyles[index] || { x: 0, y: 0, width: 100, od: 'dvw' };
         this.phone.style.transform = `translate(${style.x}%, ${style.y}%)`;
         this.phone.style.width = `${style.width}${style.od}`;
-        this.phoneOverflow.style.borderRadius = `${style.br}vw`;
+        this.phoneOverflow.style.borderRadius = `${style.br}dvw`;
         console.log(`Phone animation to position X: ${style.x}%, Y: ${style.y}%, Width: ${style.width}${style.od}`);
     }
 
@@ -175,32 +175,32 @@ document.addEventListener('DOMContentLoaded', () => {
         scrollSensitivity: 1.5,
         scrollDuration: 700,
         phoneStyles: [
-            { x: -42, y: 4, width: 41, od: "vw" }, // main
+            { x: -42, y: 4, width: 41, od: "dvw" }, // main
             { x: -30, y: 2.5, width: normanlWidthHeight, od: "px", br: 5 }, // tell
-            { x: -16, y: -12, width: 55, od: "vw" }, // tell 2
+            { x: -16, y: -12, width: 55, od: "dvw" }, // tell 2
             { x: -30, y: 2.5, width: normanlWidthHeight, od: "px", br: 5 }, // badge
             { x: -30, y: 2.5, width: normanlWidthHeight, od: "px", br: 5 }, // now let find
-            { x: -16, y: 2.5, width: 55, od: "vw", br: 6.5 }, // find your ideal
+            { x: -16, y: 2.5, width: 55, od: "dvw", br: 6.5 }, // find your ideal
             { x: -30, y: 2.5, width: normanlWidthHeight, od: "px", br: 5 }, // explore
             { x: -30, y: 2.5, width: normanlWidthHeight, od: "px" }, // found
-            { x: -16, y: -68, width: 55, od: "vw",  br: 6.5 }, // now sent
+            { x: -16, y: -68, width: 55, od: "dvw",  br: 6.5 }, // now sent
             { x: -30, y: 2.5, width: normanlWidthHeight, od: "px" }, // tell about yourself
             { x: -50, y: 250, width: normanlWidthHeight, od: "px" },
             { x: -50, y: 250, width: normanlWidthHeight, od: "px" },
         ],
         mobilePhoneStyles: [
-            { x: -50, y: 55, width: 90, od: "vw" }, // main
+            { x: -50, y: 55, width: 90, od: "dvw" }, // main
             { x: -20, y: 2.5, width: normanlWidthHeight, od: "px", br: 5 }, // tell
-            { x: -50, y: 45, width: 90, od: "vw" }, // tell 2
-            { x: -75, y: 35, width: normanlWidthHeight - normanlWidthHeight * 0.25, od: "px", br: 5 }, // badge
-            { x: -50, y: 35, width: normanlWidthHeight - normanlWidthHeight * 0.25, od: "px", br: 5 }, // now let find
-            { x: -50, y: 42, width: 90, od: "vw", br: 6.5 }, // find your ideal
+            { x: -50, y: 45, width: 90, od: "dvw" }, // tell 2
+            { x: -75, y: 40, width: normanlWidthHeight - normanlWidthHeight * 0.35, od: "px", br: 5 }, // badge
+            { x: -50, y: 30, width: normanlWidthHeight - normanlWidthHeight * 0.25, od: "px", br: 5 }, // now let find
+            { x: -50, y: 42, width: 90, od: "dvw", br: 6.5 }, // find your ideal
             { x: -50, y: 35, width: normanlWidthHeight - normanlWidthHeight * 0.25, od: "px", br: 5 }, // explore
             { x: -50, y: 35, width: normanlWidthHeight - normanlWidthHeight * 0.25, od: "px" }, // found
-            { x: -50, y: -55, width: 90, od: "vw",  br: 6.5 }, // now sent
+            { x: -50, y: -55, width: 90, od: "dvw",  br: 6.5 }, // now sent
             { x: -20, y: 2.5, width: normanlWidthHeight, od: "px", }, // tell about yourself
-            { x: -50, y: 200, width: 90, od: "vw" },
-            { x: -50, y: 200, width: 90, od: "vw" },
+            { x: -50, y: 200, width: 90, od: "dvw" },
+            { x: -50, y: 200, width: 90, od: "dvw" },
         ],
         imageMappings: [
             0, // main

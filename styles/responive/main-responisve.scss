@@ -63,6 +63,7 @@
     padding: 0px 0px 0px 21px;
     display: flex;
     align-items: center;
+
     .fp-tableCell {
     }
 
@@ -81,13 +82,14 @@
 
       &.tell_text {
         position: absolute;
-        transform: translate(0%, 10%);
+        top: 50%;
+        left: 50%;
+        transform: translate(-70%, -50%);
         transition: 1s;
 
         &.active {
-          left: -15%;
           transition: 1s;
-          transform: translate(50%, 75vh);
+          transform: translate(-50%, 52dvh);
         }
       }
 
@@ -308,12 +310,17 @@
 
     .phone {
       .content {
-        border-radius: 8.5vw !important;
+        border-radius: 8vw !important;
       }
     }
 
     .secondary-phone .content {
-      height: 65vh;
+      height: 60vh;
+      border-radius: 11vw;
+
+      img {
+        width: 98%;
+      }
     }
   }
 }

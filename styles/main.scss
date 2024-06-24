@@ -80,6 +80,7 @@ section {
 .about-section {
    display: flex;
    padding: 0px 50px 0px 50px;
+  position: relative;
 
   .fp-tableCell {
     display: flex;
@@ -95,13 +96,14 @@ section {
 
     &.tell_text {
       position: absolute;
-      left: 4%;
-      transform: translate(0%, 30%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-90%, -50%);
       transition: 1s;
 
       &.active {
         transition: 1s;
-        transform: translate(0%, 124vh);
+        transform: translate(-90%, 100%);
       }
     }
 
@@ -413,31 +415,26 @@ section {
       border-radius: 5vw;
     }
 
-    .phone {
+    .content {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      width: 99%;
+      border: 2px solid pink;
+      border-radius: 4.4vw;
+      overflow: hidden;
+      background: pink;
       z-index: -1;
-      transition: 1s !important;
 
-      .content {
+      img {
         position: absolute;
-        top: 0;
-        height: 100%;
-        width: 99%;
-        border: 2px solid pink;
-        border-radius: 4.4vw;
-        overflow: hidden;
-        background: pink;
-        z-index: -1;
-
-        img {
-          position: absolute;
-          left: 50%;
-          transform: translate(-50%, 0%);
-          width: 100%;
-          z-index: 1;
-          transform-origin: left;
-          scale: 0.94;
-          transition: transform 1s;
-        }
+        left: 50%;
+        transform: translate(-50%, -1%);
+        width: 100%;
+        z-index: 1;
+        transform-origin: left;
+        scale: 0.95;
+        transition: transform 1s;
       }
     }
 
